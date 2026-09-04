@@ -519,10 +519,11 @@
                     <div class="detail-label">P/E Ratio</div>
                     <div class="detail-value" id="modalPE">-</div>
                 </div>
-                <div class="detail-box">
-                    <div class="detail-label">Headlines</div>
-                    <div class="detail-value" id="modalHeadlines">-</div>
-                </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+                <div class="detail-label" style="margin-bottom: 12px;">📰 Latest Headlines</div>
+                <div id="modalHeadlines" style="display: flex; flex-direction: column; gap: 10px;"></div>
             </div>
         </div>
     </div>
@@ -603,7 +604,23 @@
             document.getElementById('modalValuation').textContent = formatScore(stock.valuation);
             document.getElementById('modalSentiment').textContent = formatScore(stock.sentiment);
             document.getElementById('modalPE').textContent = stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A';
-            document.getElementById('modalHeadlines').textContent = stock.headlines_used;
+
+            const headlinesDiv = document.getElementById('modalHeadlines');
+            headlinesDiv.innerHTML = '';
+            if (stock.headlines && stock.headlines.length > 0) {
+                stock.headlines.forEach(headline => {
+                    const link = document.createElement('a');
+                    link.href = headline.url;
+                    link.target = '_blank';
+                    link.style.cssText = 'color: #3b82f6; text-decoration: none; padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.9em; line-height: 1.4;';
+                    link.textContent = headline.title;
+                    link.onmouseover = () => link.style.color = '#1d4ed8';
+                    link.onmouseout = () => link.style.color = '#3b82f6';
+                    headlinesDiv.appendChild(link);
+                });
+            } else {
+                headlinesDiv.textContent = 'No headlines available';
+            }
             document.getElementById('stockModal').style.display = 'block';
         }
 
