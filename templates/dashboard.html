@@ -13,79 +13,357 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            background: #f5f7fa;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh;
             padding: 24px 16px;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
         header {
-            background: white;
-            padding: 28px 32px;
-            border-radius: 8px;
-            border: 1px solid #e0e6ed;
-            margin-bottom: 28px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         h1 {
-            color: #1a202c;
-            font-size: 2em;
-            font-weight: 700;
+            color: #0f172a;
+            font-size: 2.2em;
+            font-weight: 800;
             margin-bottom: 6px;
-            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            color: #718096;
-            font-size: 0.95em;
+            color: #64748b;
+            font-size: 1em;
             margin-bottom: 20px;
-            font-weight: 400;
         }
 
         .controls {
             display: flex;
             gap: 12px;
-            margin-bottom: 16px;
+            flex-wrap: wrap;
         }
 
         button {
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 11px 22px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.95em;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
 
         button:hover {
-            background: #2563eb;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
-        button:active {
-            transform: scale(0.98);
+        .timestamp {
+            color: #94a3b8;
+            font-size: 0.85em;
+            margin-top: 16px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .stat-value {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2em;
+            font-weight: 800;
+        }
+
+        .stocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stock-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.95));
+            border-radius: 12px;
+            padding: 24px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stock-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+        }
+
+        .stock-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            border-color: #3b82f6;
+        }
+
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+        }
+
+        .stock-ticker {
+            font-size: 1.6em;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+
+        .stock-name {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .stock-score {
+            font-size: 2.2em;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .score-excellent { color: #059669; }
+        .score-good { color: #2563eb; }
+        .score-moderate { color: #d97706; }
+        .score-poor { color: #dc2626; }
+
+        .stock-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .metric-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #bae6fd;
+        }
+
+        .metric-label {
+            font-size: 0.75em;
+            color: #0c4a6e;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #0369a1;
+            margin-top: 4px;
+        }
+
+        .pe-ratio {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-color: #fecaca;
+        }
+
+        .pe-ratio .metric-label {
+            color: #7f1d1d;
+        }
+
+        .pe-ratio .metric-value {
+            color: #991b1b;
+        }
+
+        .view-details {
+            margin-top: 16px;
+            width: 100%;
+            padding: 10px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .view-details:hover {
+            background: #2563eb;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 32px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #94a3b8;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: #0f172a;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .modal-subtitle {
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .detail-box {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .detail-label {
+            color: #64748b;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #fecaca;
+        }
+
+        .footer {
+            text-align: center;
+            color: #94a3b8;
+            margin-top: 32px;
+            font-size: 0.9em;
         }
 
         .loading {
             text-align: center;
-            padding: 40px;
-            color: #4a5568;
-            font-size: 1em;
+            padding: 60px 20px;
+            color: white;
         }
 
         .spinner {
-            border: 3px solid #e0e6ed;
-            border-top: 3px solid #3b82f6;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
@@ -95,202 +373,61 @@
             100% { transform: rotate(360deg); }
         }
 
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 20px;
+        .sort-controls {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px 24px;
             border-radius: 8px;
-            border: 1px solid #e0e6ed;
-            text-align: center;
-        }
-
-        .stat-label {
-            color: #718096;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .stat-value {
-            color: #3b82f6;
-            font-size: 2em;
-            font-weight: 700;
-        }
-
-        .table-container {
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e0e6ed;
-            overflow: hidden;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead {
-            background: #f8f9fb;
-            border-bottom: 1px solid #e0e6ed;
-        }
-
-        th {
-            padding: 14px 16px;
-            text-align: left;
-            color: #4a5568;
-            font-weight: 600;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            cursor: help;
-        }
-
-        td {
-            padding: 14px 16px;
-            border-bottom: 1px solid #f0f2f5;
-            color: #2d3748;
-            font-size: 0.95em;
-        }
-
-        tr:hover {
-            background: #fafbfc;
-        }
-
-        .ticker {
-            font-weight: 700;
-            color: #3b82f6;
-        }
-
-        .score {
-            font-weight: 700;
-            font-size: 1.05em;
-        }
-
-        .score-excellent {
-            color: #059669;
-        }
-
-        .score-good {
-            color: #2563eb;
-        }
-
-        .score-moderate {
-            color: #d97706;
-        }
-
-        .score-poor {
-            color: #dc2626;
-        }
-
-        .bar {
-            display: inline-block;
-            height: 6px;
-            border-radius: 3px;
-            background: #3b82f6;
-            width: 80px;
-        }
-
-        .score-bar {
+            margin-bottom: 20px;
             display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 8px;
         }
 
-        .metric {
-            display: inline-block;
-            background: #eff6ff;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            color: #1e40af;
+        .sort-controls label {
+            color: white;
             font-weight: 600;
+            font-size: 0.9em;
         }
 
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 16px;
+        .sort-controls select {
+            padding: 8px 12px;
             border-radius: 6px;
-            margin-bottom: 16px;
-            border: 1px solid #fecaca;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
         }
 
-        .footer {
-            text-align: center;
-            color: #718096;
-            margin-top: 24px;
-            font-size: 0.85em;
-        }
-
-        .timestamp {
-            color: #a0aec0;
-            font-size: 0.85em;
-            margin-top: 12px;
-        }
-
-        #helpSection {
-            margin-top: 20px !important;
-            padding: 20px 24px !important;
-            background: #eff6ff !important;
-            border-radius: 8px !important;
-            border: 1px solid #bfdbfe !important;
-        }
-
-        #helpSection h3 {
-            color: #1e40af !important;
-            margin-bottom: 16px !important;
-            font-size: 1em !important;
-        }
-
-        #helpSection strong {
-            color: #1e40af;
-        }
-
-        #helpSection p {
-            color: #1e40af;
-            margin: 4px 0 !important;
+        .sort-controls select option {
+            background: #0f172a;
+            color: white;
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 16px;
-            }
-
             header {
-                padding: 20px 24px;
-                margin-bottom: 20px;
+                padding: 20px;
             }
 
             h1 {
-                font-size: 1.5em;
+                font-size: 1.6em;
             }
 
-            .controls {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-
-            th, td {
-                padding: 12px 8px;
-                font-size: 0.9em;
-            }
-
-            .stat-value {
-                font-size: 1.5em;
+            .stocks-grid {
+                grid-template-columns: 1fr;
             }
 
             .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .stock-metrics {
                 grid-template-columns: 1fr;
             }
         }
@@ -300,54 +437,33 @@
     <div class="container">
         <header>
             <h1>📈 Stock Tracker</h1>
-            <p class="subtitle">Daily stock screener with momentum, valuation & sentiment scoring</p>
+            <p class="subtitle">Deep dive into 50 stocks with real-time scoring</p>
             <div class="controls">
                 <button onclick="refreshData()">🔄 Refresh Data</button>
                 <button onclick="downloadCSV()">📥 Download CSV</button>
                 <button onclick="toggleHelp()">❓ How to Read</button>
             </div>
             <div class="timestamp" id="timestamp"></div>
-
-            <div id="helpSection" style="display: none; margin-top: 20px; padding: 20px; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #667eea;">
-                <h3 style="color: #667eea; margin-top: 0;">📖 How to Read the Dashboard</h3>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                    <div>
-                        <strong style="color: #667eea;">Ticker</strong>
-                        <p style="margin: 5px 0; font-size: 0.95em;">Stock's shorthand code (AAPL = Apple, MSFT = Microsoft)</p>
-                    </div>
-
-                    <div>
-                        <strong style="color: #667eea;">Score (0-100)</strong>
-                        <p style="margin: 5px 0; font-size: 0.95em;">Overall ranking combining all factors. 60+ = Excellent, 50-59 = Good, 40-49 = Moderate, Below 40 = Poor</p>
-                    </div>
-
-                    <div>
-                        <strong style="color: #667eea;">Momentum</strong>
-                        <p style="margin: 5px 0; font-size: 0.95em;">Is the price going up? Looks at moving averages & recent trends. Higher = uptrend 📈</p>
-                    </div>
-
-                    <div>
-                        <strong style="color: #667eea;">Valuation</strong>
-                        <p style="margin: 5px 0; font-size: 0.95em;">Is it cheap or expensive? Based on P/E ratio. Higher = better value 💰</p>
-                    </div>
-
-                    <div>
-                        <strong style="color: #667eea;">Sentiment</strong>
-                        <p style="margin: 5px 0; font-size: 0.95em;">Are news headlines positive? AI analyzes recent articles. Higher = good news 😊</p>
-                    </div>
-
-                    <div>
-                        <strong style="color: #667eea;">P/E Ratio</strong>
-                        <p style="margin: 5px 0; font-size: 0.95em;">Price-to-Earnings ratio. How much you pay per $1 of company earnings. Lower = better value</p>
-                    </div>
-                </div>
-            </div>
         </header>
+
+        <div class="sort-controls">
+            <label>Sort by:</label>
+            <select onchange="sortStocks(this.value)">
+                <option value="score-desc">Score (High → Low)</option>
+                <option value="score-asc">Score (Low → High)</option>
+                <option value="momentum-desc">Momentum (High → Low)</option>
+                <option value="momentum-asc">Momentum (Low → High)</option>
+                <option value="valuation-desc">Valuation (High → Low)</option>
+                <option value="valuation-asc">Valuation (Low → High)</option>
+                <option value="sentiment-desc">Sentiment (High → Low)</option>
+                <option value="sentiment-asc">Sentiment (Low → High)</option>
+                <option value="ticker">Ticker (A → Z)</option>
+            </select>
+        </div>
 
         <div id="loading" class="loading" style="display: none;">
             <div class="spinner"></div>
-            <p>Loading stock data...</p>
+            <p>Loading stocks...</p>
         </div>
 
         <div id="error" class="error" style="display: none;"></div>
@@ -368,22 +484,45 @@
                 </div>
             </div>
 
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th title="Stock ticker symbol">Ticker</th>
-                            <th title="Company name">Company</th>
-                            <th title="Overall score combining all factors (0-100)">Score</th>
-                            <th title="Price trend: is it going up? Moving averages and recent gains (0-100)">Momentum</th>
-                            <th title="Is it cheap or expensive? Lower P/E = higher score (0-100)">Valuation</th>
-                            <th title="Are news headlines positive or negative? (0-100)">Sentiment</th>
-                            <th title="Price-to-Earnings ratio - earnings per dollar of stock price">P/E Ratio</th>
-                        </tr>
-                    </thead>
-                    <tbody id="stocksTable">
-                    </tbody>
-                </table>
+            <div class="stocks-grid" id="stocksGrid"></div>
+        </div>
+    </div>
+
+    <div id="stockModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title" id="modalTicker">-</div>
+                    <div class="modal-subtitle" id="modalName">-</div>
+                </div>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+
+            <div class="modal-grid">
+                <div class="detail-box">
+                    <div class="detail-label">Overall Score</div>
+                    <div class="detail-value" id="modalScore">-</div>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-label">Momentum</div>
+                    <div class="detail-value" id="modalMomentum">-</div>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-label">Valuation</div>
+                    <div class="detail-value" id="modalValuation">-</div>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-label">Sentiment</div>
+                    <div class="detail-value" id="modalSentiment">-</div>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-label">P/E Ratio</div>
+                    <div class="detail-value" id="modalPE">-</div>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-label">Headlines</div>
+                    <div class="detail-value" id="modalHeadlines">-</div>
+                </div>
             </div>
         </div>
     </div>
@@ -393,6 +532,8 @@
     </div>
 
     <script>
+        let allStocks = [];
+
         function getScoreClass(score) {
             if (score >= 70) return 'score-excellent';
             if (score >= 55) return 'score-good';
@@ -405,31 +546,44 @@
         }
 
         function renderStocks(stocks) {
-            const tbody = document.getElementById('stocksTable');
-            tbody.innerHTML = '';
+            const grid = document.getElementById('stocksGrid');
+            grid.innerHTML = '';
 
             stocks.forEach(stock => {
-                const row = document.createElement('tr');
                 const scoreClass = getScoreClass(stock.score);
-
-                row.innerHTML = `
-                    <td class="ticker">${stock.ticker}</td>
-                    <td>${stock.name}</td>
-                    <td class="score ${scoreClass}">
-                        <div class="score-bar">
-                            <span>${formatScore(stock.score)}</span>
-                            <div class="bar" style="width: ${stock.score}px;"></div>
+                const card = document.createElement('div');
+                card.className = 'stock-card';
+                card.innerHTML = `
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">${stock.ticker}</div>
+                            <div class="stock-name">${stock.name}</div>
                         </div>
-                    </td>
-                    <td><span class="metric">${formatScore(stock.momentum)}</span></td>
-                    <td><span class="metric">${formatScore(stock.valuation)}</span></td>
-                    <td><span class="metric">${formatScore(stock.sentiment)}</span></td>
-                    <td>${stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A'}</td>
+                        <div class="stock-score ${scoreClass}">${formatScore(stock.score)}</div>
+                    </div>
+                    <div class="stock-metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">Momentum</div>
+                            <div class="metric-value">${formatScore(stock.momentum)}</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Valuation</div>
+                            <div class="metric-value">${formatScore(stock.valuation)}</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Sentiment</div>
+                            <div class="metric-value">${formatScore(stock.sentiment)}</div>
+                        </div>
+                        <div class="metric-box pe-ratio">
+                            <div class="metric-label">P/E</div>
+                            <div class="metric-value">${stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A'}</div>
+                        </div>
+                    </div>
+                    <button class="view-details" onclick="openModal(${stocks.indexOf(stock)})">Deep Dive →</button>
                 `;
-                tbody.appendChild(row);
+                grid.appendChild(card);
             });
 
-            // Update stats
             if (stocks.length > 0) {
                 document.getElementById('topStock').textContent = stocks[0].ticker;
                 const avgScore = (stocks.reduce((sum, s) => sum + s.score, 0) / stocks.length).toFixed(1);
@@ -438,6 +592,58 @@
             }
 
             updateTimestamp();
+        }
+
+        function openModal(index) {
+            const stock = allStocks[index];
+            document.getElementById('modalTicker').textContent = stock.ticker;
+            document.getElementById('modalName').textContent = stock.name;
+            document.getElementById('modalScore').textContent = formatScore(stock.score);
+            document.getElementById('modalMomentum').textContent = formatScore(stock.momentum);
+            document.getElementById('modalValuation').textContent = formatScore(stock.valuation);
+            document.getElementById('modalSentiment').textContent = formatScore(stock.sentiment);
+            document.getElementById('modalPE').textContent = stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A';
+            document.getElementById('modalHeadlines').textContent = stock.headlines_used;
+            document.getElementById('stockModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('stockModal').style.display = 'none';
+        }
+
+        function sortStocks(sortBy) {
+            let sorted = [...allStocks];
+
+            switch(sortBy) {
+                case 'score-desc':
+                    sorted.sort((a, b) => b.score - a.score);
+                    break;
+                case 'score-asc':
+                    sorted.sort((a, b) => a.score - b.score);
+                    break;
+                case 'momentum-desc':
+                    sorted.sort((a, b) => b.momentum - a.momentum);
+                    break;
+                case 'momentum-asc':
+                    sorted.sort((a, b) => a.momentum - b.momentum);
+                    break;
+                case 'valuation-desc':
+                    sorted.sort((a, b) => b.valuation - a.valuation);
+                    break;
+                case 'valuation-asc':
+                    sorted.sort((a, b) => a.valuation - b.valuation);
+                    break;
+                case 'sentiment-desc':
+                    sorted.sort((a, b) => b.sentiment - a.sentiment);
+                    break;
+                case 'sentiment-asc':
+                    sorted.sort((a, b) => a.sentiment - b.sentiment);
+                    break;
+                case 'ticker':
+                    sorted.sort((a, b) => a.ticker.localeCompare(b.ticker));
+                    break;
+            }
+            renderStocks(sorted);
         }
 
         function updateTimestamp() {
@@ -469,8 +675,8 @@
             try {
                 const response = await fetch('/api/stocks');
                 if (!response.ok) throw new Error('Failed to load data');
-                const stocks = await response.json();
-                renderStocks(stocks);
+                allStocks = await response.json();
+                renderStocks(allStocks);
                 showContent();
             } catch (error) {
                 showError(error.message);
@@ -483,7 +689,8 @@
                 const response = await fetch('/api/refresh');
                 if (!response.ok) throw new Error('Failed to refresh data');
                 const data = await response.json();
-                renderStocks(data.stocks);
+                allStocks = data.stocks;
+                renderStocks(allStocks);
                 showContent();
             } catch (error) {
                 showError(error.message);
@@ -498,15 +705,16 @@
         }
 
         function toggleHelp() {
-            const helpSection = document.getElementById('helpSection');
-            if (helpSection.style.display === 'none') {
-                helpSection.style.display = 'block';
-            } else {
-                helpSection.style.display = 'none';
-            }
+            alert('SCORE: Overall ranking (60+ = Excellent, 50-59 = Good, 40-49 = Moderate, <40 = Poor)\nMOMENTUM: Price trend (higher = uptrend)\nVALUATION: Is it cheap? (higher = better value)\nSENTIMENT: News headlines (higher = positive)\nP/E RATIO: Price per earnings (lower = better)');
         }
 
-        // Load data on page load
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('stockModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+
         window.addEventListener('load', loadData);
     </script>
 </body>
