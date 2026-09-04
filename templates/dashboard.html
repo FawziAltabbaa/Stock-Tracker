@@ -473,26 +473,35 @@
             <p class="subtitle">Deep dive into 50 stocks with real-time scoring</p>
             <div class="controls">
                 <button onclick="refreshData()">🔄 Refresh Data</button>
-                <button onclick="downloadCSV()">📥 Download CSV</button>
                 <button onclick="toggleHelp()">❓ How to Read</button>
             </div>
             <div class="timestamp" id="timestamp"></div>
         </header>
 
-        <div class="sort-controls">
-            <label>Sort by:</label>
-            <select onchange="sortStocks(this.value)">
-                <option value="score-desc">Score (High → Low)</option>
-                <option value="score-asc">Score (Low → High)</option>
-                <option value="momentum-desc">Momentum (High → Low)</option>
-                <option value="momentum-asc">Momentum (Low → High)</option>
-                <option value="valuation-desc">Valuation (High → Low)</option>
-                <option value="valuation-asc">Valuation (Low → High)</option>
-                <option value="sentiment-desc">Sentiment (High → Low)</option>
-                <option value="sentiment-asc">Sentiment (Low → High)</option>
-                <option value="ticker">Ticker (A → Z)</option>
-            </select>
+        <div class="sort-controls" style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+            <div>
+                <label>Sort by:</label>
+                <select onchange="sortStocks(this.value)">
+                    <option value="score-desc">Score (High → Low)</option>
+                    <option value="score-asc">Score (Low → High)</option>
+                    <option value="momentum-desc">Momentum (High → Low)</option>
+                    <option value="momentum-asc">Momentum (Low → High)</option>
+                    <option value="valuation-desc">Valuation (High → Low)</option>
+                    <option value="valuation-asc">Valuation (Low → High)</option>
+                    <option value="sentiment-desc">Sentiment (High → Low)</option>
+                    <option value="sentiment-asc">Sentiment (Low → High)</option>
+                    <option value="ticker">Ticker (A → Z)</option>
+                </select>
+            </div>
+            <div>
+                <label>Industry:</label>
+                <select id="industryFilter" onchange="filterByIndustry()">
+                    <option value="">All Industries</option>
+                </select>
+            </div>
         </div>
+
+        <div id="paginationControls" style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;"></div>
 
         <div id="loading" class="loading" style="display: none;">
             <div class="spinner"></div>
@@ -740,7 +749,7 @@
         }
 
         function sortStocks(sortBy) {
-            let sorted = [...allStocks];
+            let sorted = [...filteredStocks];
 
             switch(sortBy) {
                 case 'score-desc':
@@ -771,7 +780,9 @@
                     sorted.sort((a, b) => a.ticker.localeCompare(b.ticker));
                     break;
             }
-            renderStocks(sorted);
+            filteredStocks = sorted;
+            currentPage = 1;
+            displayPage();
         }
 
         function updateTimestamp() {
@@ -798,13 +809,32 @@
             document.getElementById('error').style.display = 'none';
         }
 
+        let currentPage = 1;
+        const stocksPerPage = 25;
+        let filteredStocks = [];
+
         async function loadData() {
             showLoading();
             try {
                 const response = await fetch('/api/stocks');
                 if (!response.ok) throw new Error('Failed to load data');
                 allStocks = await response.json();
-                renderStocks(allStocks);
+
+                const industriesResponse = await fetch('/api/industries');
+                if (industriesResponse.ok) {
+                    const industries = await industriesResponse.json();
+                    const select = document.getElementById('industryFilter');
+                    industries.forEach(industry => {
+                        const option = document.createElement('option');
+                        option.value = industry;
+                        option.textContent = industry;
+                        select.appendChild(option);
+                    });
+                }
+
+                filteredStocks = [...allStocks];
+                currentPage = 1;
+                displayPage();
                 showContent();
             } catch (error) {
                 showError(error.message);
@@ -818,18 +848,73 @@
                 if (!response.ok) throw new Error('Failed to refresh data');
                 const data = await response.json();
                 allStocks = data.stocks;
-                renderStocks(allStocks);
+                filteredStocks = [...allStocks];
+                currentPage = 1;
+                displayPage();
                 showContent();
             } catch (error) {
                 showError(error.message);
             }
         }
 
-        function downloadCSV() {
-            const link = document.createElement('a');
-            link.href = `/daily_scores_${new Date().toISOString().split('T')[0]}.csv`;
-            link.download = `stock-scores-${new Date().toISOString().split('T')[0]}.csv`;
-            link.click();
+        function filterByIndustry() {
+            const selected = document.getElementById('industryFilter').value;
+            if (selected === '') {
+                filteredStocks = [...allStocks];
+            } else {
+                filteredStocks = allStocks.filter(s => s.industry === selected);
+            }
+            currentPage = 1;
+            displayPage();
+        }
+
+        function displayPage() {
+            const start = (currentPage - 1) * stocksPerPage;
+            const end = start + stocksPerPage;
+            const pageStocks = filteredStocks.slice(start, end);
+
+            renderStocks(pageStocks);
+            updatePaginationControls();
+        }
+
+        function updatePaginationControls() {
+            const totalPages = Math.ceil(filteredStocks.length / stocksPerPage);
+            const paginationDiv = document.getElementById('paginationControls');
+            paginationDiv.innerHTML = '';
+
+            if (totalPages <= 1) return;
+
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = '← Previous';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPage();
+                    window.scrollTo(0, 0);
+                }
+            };
+            prevBtn.style.cssText = 'padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;';
+
+            const pageInfo = document.createElement('span');
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+            pageInfo.style.cssText = 'padding: 8px 16px; color: #0f172a; font-weight: 600;';
+
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next →';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPage();
+                    window.scrollTo(0, 0);
+                }
+            };
+            nextBtn.style.cssText = 'padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;';
+
+            paginationDiv.appendChild(prevBtn);
+            paginationDiv.appendChild(pageInfo);
+            paginationDiv.appendChild(nextBtn);
         }
 
         function toggleHelp() {
