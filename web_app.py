@@ -61,9 +61,22 @@ STOCKS = [
 
 
 def get_news_for_ticker(ticker):
-    """Fetch real news from NewsAPI for a stock ticker"""
+    """Fetch real news from NewsAPI for a stock ticker from major financial sources"""
+    # Only include major financial news sources
+    financial_sources = [
+        'bloomberg',
+        'cnbc',
+        'financial-times',
+        'marketwatch',
+        'seekingalpha',
+        'investing.com',
+        'reuters',
+        'associated-press'
+    ]
+    sources_param = ','.join(financial_sources)
+
     try:
-        url = f"https://newsapi.org/v2/everything?q={ticker}&sortBy=publishedAt&language=en&apiKey={NEWS_API_KEY}"
+        url = f"https://newsapi.org/v2/everything?q={ticker}&sources={sources_param}&sortBy=publishedAt&language=en&apiKey={NEWS_API_KEY}"
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             data = response.json()
