@@ -1,0 +1,6 @@
+ticker,name,momentum,valuation,sentiment,score,pe_ratio,headlines_used
+AAPL,Apple Inc.,82.5,28.8,60.8,58.8,28.5,4
+NVDA,NVIDIA Corporation,84.0,0.0,49.7,46.8,52.4,4
+AMZN,Amazon.com Inc.,69.4,0.0,63.1,46.4,42.6,4
+MSFT,Microsoft Corporation,32.5,19.7,58.9,37.9,32.1,4
+TSLA,Tesla Inc.,42.0,0.0,46.3,30.9,65.3,4
