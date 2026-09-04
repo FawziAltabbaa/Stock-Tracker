@@ -1,11 +1,7 @@
 import os
-import requests
 from flask import Flask, render_template, jsonify
 
 app = Flask(__name__, template_folder='templates')
-
-# NewsAPI key from environment
-NEWS_API_KEY = os.environ.get('NEWS_API_KEY', '96eb0f8f345140ecbf244a1edbc63039')
 
 STOCKS = [
     {"ticker": "AAPL", "name": "Apple Inc.", "momentum": 82.5, "valuation": 28.8, "sentiment": 60.8, "score": 58.8, "pe_ratio": 28.5},
@@ -60,37 +56,6 @@ STOCKS = [
 ]
 
 
-def get_news_for_ticker(ticker):
-    """Fetch real news from NewsAPI for a stock ticker from major financial sources"""
-    # Only include major financial news sources
-    financial_sources = [
-        'bloomberg',
-        'cnbc',
-        'financial-times',
-        'marketwatch',
-        'seekingalpha',
-        'investing.com',
-        'reuters',
-        'associated-press'
-    ]
-    sources_param = ','.join(financial_sources)
-
-    try:
-        url = f"https://newsapi.org/v2/everything?q={ticker}&sources={sources_param}&sortBy=publishedAt&language=en&apiKey={NEWS_API_KEY}"
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            data = response.json()
-            articles = data.get('articles', [])[:4]
-            headlines = [
-                {"title": article['title'], "url": article['url'], "source": article.get('source', {}).get('name', 'News')}
-                for article in articles
-            ]
-            return headlines
-    except Exception as e:
-        print(f"Error fetching news for {ticker}: {e}")
-    return []
-
-
 @app.route('/')
 def home():
     return render_template('dashboard.html')
@@ -104,12 +69,6 @@ def health():
 @app.route('/api/stocks')
 def stocks():
     return jsonify(STOCKS)
-
-
-@app.route('/api/news/<ticker>')
-def news(ticker):
-    headlines = get_news_for_ticker(ticker)
-    return jsonify({"ticker": ticker, "headlines": headlines})
 
 
 @app.route('/api/refresh')
