@@ -714,7 +714,8 @@
             });
 
             if (stocks.length > 0) {
-                document.getElementById('topStock').textContent = stocks[0].ticker;
+                const topStockByScore = stocks.reduce((prev, current) => (prev.score > current.score) ? prev : current);
+                document.getElementById('topStock').textContent = topStockByScore.ticker;
                 const avgScore = (stocks.reduce((sum, s) => sum + s.score, 0) / stocks.length).toFixed(1);
                 document.getElementById('avgScore').textContent = avgScore;
                 document.getElementById('totalStocks').textContent = stocks.length;
