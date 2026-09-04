@@ -1,4 +1,5 @@
-flask==3.0.0
-pandas==2.0.3
-yfinance==0.2.32
-vaderSentiment==3.3.2
+flask>=3.0.0
+pandas>=2.0.0
+yfinance>=0.2.30
+vaderSentiment>=3.3.2
+numpy>=1.24.0
