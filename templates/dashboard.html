@@ -405,6 +405,39 @@
             color: white;
         }
 
+        .help-toggle {
+            cursor: pointer;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .help-toggle:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .help-content {
+            max-height: 200px;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 20px;
@@ -485,6 +518,92 @@
             </div>
 
             <div class="stocks-grid" id="stocksGrid"></div>
+        </div>
+    </div>
+
+    <div id="helpModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title">📚 How to Read the Dashboard</div>
+                    <div class="modal-subtitle">Understand each metric in simple terms</div>
+                </div>
+                <span class="close" onclick="closeHelp()">&times;</span>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <div class="help-section">
+                    <div class="help-toggle" onclick="toggleSection('score-help')">
+                        <span style="font-size: 1.2em; margin-right: 10px;">▶</span>
+                        <span style="font-weight: 700; color: #0f172a;">📊 SCORE - Overall Ranking</span>
+                    </div>
+                    <div id="score-help" class="help-content" style="display: none; margin-top: 10px; padding: 15px; background: #f0f9ff; border-radius: 6px; border-left: 4px solid #3b82f6;">
+                        <p style="margin: 0; color: #1e293b; line-height: 1.6;">
+                            This is your overall "buy signal" score combining all factors.<br>
+                            <strong>60+</strong> = Excellent pick 🟢<br>
+                            <strong>50-59</strong> = Good opportunity 🔵<br>
+                            <strong>40-49</strong> = Worth watching 🟠<br>
+                            <strong>&lt;40</strong> = Proceed with caution 🔴
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-section" style="margin-top: 15px;">
+                    <div class="help-toggle" onclick="toggleSection('momentum-help')">
+                        <span style="font-size: 1.2em; margin-right: 10px;">▶</span>
+                        <span style="font-weight: 700; color: #0f172a;">📈 MOMENTUM - Price Trend</span>
+                    </div>
+                    <div id="momentum-help" class="help-content" style="display: none; margin-top: 10px; padding: 15px; background: #f0fdf4; border-radius: 6px; border-left: 4px solid #22c55e;">
+                        <p style="margin: 0; color: #1e293b; line-height: 1.6;">
+                            Is the stock going up or down? Higher score = stronger uptrend.<br>
+                            Think of it like a car's speed - fast upward = positive momentum.<br>
+                            <strong>Tip:</strong> High momentum often means recent good news or earnings.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-section" style="margin-top: 15px;">
+                    <div class="help-toggle" onclick="toggleSection('valuation-help')">
+                        <span style="font-size: 1.2em; margin-right: 10px;">▶</span>
+                        <span style="font-weight: 700; color: #0f172a;">💰 VALUATION - Is It Cheap?</span>
+                    </div>
+                    <div id="valuation-help" class="help-content" style="display: none; margin-top: 10px; padding: 15px; background: #fef3c7; border-radius: 6px; border-left: 4px solid #f59e0b;">
+                        <p style="margin: 0; color: #1e293b; line-height: 1.6;">
+                            Is the stock price reasonable for what you're buying?<br>
+                            Higher score = better value for your money (like a sale).<br>
+                            <strong>Tip:</strong> Look for high valuations + high momentum = "growth at reasonable price"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-section" style="margin-top: 15px;">
+                    <div class="help-toggle" onclick="toggleSection('sentiment-help')">
+                        <span style="font-size: 1.2em; margin-right: 10px;">▶</span>
+                        <span style="font-weight: 700; color: #0f172a;">💬 SENTIMENT - News Vibes</span>
+                    </div>
+                    <div id="sentiment-help" class="help-content" style="display: none; margin-top: 10px; padding: 15px; background: #fce7f3; border-radius: 6px; border-left: 4px solid #ec4899;">
+                        <p style="margin: 0; color: #1e293b; line-height: 1.6;">
+                            What are people saying about this stock in the news?<br>
+                            Higher score = more positive headlines and buzz.<br>
+                            <strong>Tip:</strong> Positive news might already be "priced in" - don't chase momentum alone.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="help-section" style="margin-top: 15px;">
+                    <div class="help-toggle" onclick="toggleSection('pe-help')">
+                        <span style="font-size: 1.2em; margin-right: 10px;">▶</span>
+                        <span style="font-weight: 700; color: #0f172a;">🏷️ P/E RATIO - Price Per Dollar of Earnings</span>
+                    </div>
+                    <div id="pe-help" class="help-content" style="display: none; margin-top: 10px; padding: 15px; background: #e0e7ff; border-radius: 6px; border-left: 4px solid #6366f1;">
+                        <p style="margin: 0; color: #1e293b; line-height: 1.6;">
+                            How much you're paying for each $1 of the company's earnings.<br>
+                            <strong>Lower is better!</strong> P/E of 15 is cheaper than P/E of 30.<br>
+                            <strong>Tip:</strong> Compare with industry average. Tech stocks usually have higher P/E than banks.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -714,13 +833,35 @@
         }
 
         function toggleHelp() {
-            alert('SCORE: Overall ranking (60+ = Excellent, 50-59 = Good, 40-49 = Moderate, <40 = Poor)\nMOMENTUM: Price trend (higher = uptrend)\nVALUATION: Is it cheap? (higher = better value)\nSENTIMENT: News headlines (higher = positive)\nP/E RATIO: Price per earnings (lower = better)');
+            document.getElementById('helpModal').style.display = 'block';
+        }
+
+        function closeHelp() {
+            document.getElementById('helpModal').style.display = 'none';
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const toggle = event.currentTarget;
+            const arrow = toggle.querySelector('span:first-child');
+
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+                arrow.textContent = '▼';
+            } else {
+                section.style.display = 'none';
+                arrow.textContent = '▶';
+            }
         }
 
         window.addEventListener('click', function(event) {
-            const modal = document.getElementById('stockModal');
-            if (event.target == modal) {
+            const stockModal = document.getElementById('stockModal');
+            const helpModal = document.getElementById('helpModal');
+            if (event.target == stockModal) {
                 closeModal();
+            }
+            if (event.target == helpModal) {
+                closeHelp();
             }
         });
 
