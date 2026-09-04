@@ -212,6 +212,12 @@ def stocks():
     return jsonify(STOCKS)
 
 
+@app.route('/api/industries')
+def industries():
+    unique_industries = sorted(set(stock.get('industry', 'Unknown') for stock in STOCKS))
+    return jsonify(unique_industries)
+
+
 @app.route('/api/refresh')
 def refresh():
     return jsonify({"success": True, "stocks": STOCKS})
