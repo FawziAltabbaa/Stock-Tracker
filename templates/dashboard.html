@@ -580,7 +580,7 @@
                             <div class="metric-value">${stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A'}</div>
                         </div>
                     </div>
-                    <button class="view-details" onclick="openModal(${stocks.indexOf(stock)})">Deep Dive →</button>
+                    <button class="view-details" onclick="openModal('${stock.ticker}')">Deep Dive →</button>
                 `;
                 grid.appendChild(card);
             });
@@ -595,8 +595,8 @@
             updateTimestamp();
         }
 
-        function openModal(index) {
-            const stock = allStocks[index];
+        function openModal(ticker) {
+            const stock = allStocks.find(s => s.ticker === ticker);
             document.getElementById('modalTicker').textContent = stock.ticker;
             document.getElementById('modalName').textContent = stock.name;
             document.getElementById('modalScore').textContent = formatScore(stock.score);
