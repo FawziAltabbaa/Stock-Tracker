@@ -606,21 +606,34 @@
             document.getElementById('modalPE').textContent = stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A';
 
             const headlinesDiv = document.getElementById('modalHeadlines');
-            headlinesDiv.innerHTML = '';
-            if (stock.headlines && stock.headlines.length > 0) {
-                stock.headlines.forEach(headline => {
-                    const link = document.createElement('a');
-                    link.href = headline.url;
-                    link.target = '_blank';
-                    link.style.cssText = 'color: #3b82f6; text-decoration: none; padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.9em; line-height: 1.4;';
-                    link.textContent = headline.title;
-                    link.onmouseover = () => link.style.color = '#1d4ed8';
-                    link.onmouseout = () => link.style.color = '#3b82f6';
-                    headlinesDiv.appendChild(link);
+            headlinesDiv.innerHTML = '<div style="color: #64748b; font-size: 0.9em;">Loading news...</div>';
+
+            // Fetch real news from NewsAPI
+            fetch(`/api/news/${stock.ticker}`)
+                .then(res => res.json())
+                .then(data => {
+                    headlinesDiv.innerHTML = '';
+                    if (data.headlines && data.headlines.length > 0) {
+                        data.headlines.forEach(headline => {
+                            const link = document.createElement('a');
+                            link.href = headline.url;
+                            link.target = '_blank';
+                            link.style.cssText = 'color: #3b82f6; text-decoration: none; padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.9em; line-height: 1.4; display: block;';
+                            link.textContent = headline.title;
+                            link.title = headline.source;
+                            link.onmouseover = () => link.style.color = '#1d4ed8';
+                            link.onmouseout = () => link.style.color = '#3b82f6';
+                            headlinesDiv.appendChild(link);
+                        });
+                    } else {
+                        headlinesDiv.textContent = 'No recent news found';
+                    }
+                })
+                .catch(err => {
+                    headlinesDiv.innerHTML = '<div style="color: #ef4444; font-size: 0.9em;">Unable to load news</div>';
+                    console.error('Error fetching news:', err);
                 });
-            } else {
-                headlinesDiv.textContent = 'No headlines available';
-            }
+
             document.getElementById('stockModal').style.display = 'block';
         }
 
