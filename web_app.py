@@ -1,328 +1,48 @@
 import os
-import requests
-import base64
+import json
 from flask import Flask, render_template, jsonify
 import logging
-import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__, template_folder='templates')
 
-# Trading 212 API Configuration
-API_KEY = os.getenv('TRADING212_API_KEY')
-API_SECRET = os.getenv('TRADING212_API_SECRET')
-API_BASE_URL = 'https://api.live.trading212.com'
-DEMO_API_BASE_URL = 'https://api.demo.trading212.com'
+def load_stocks_data():
+    """Load stock data from JSON file (populated from Shibui Finance)"""
+    try:
+        data_file = os.path.join(os.path.dirname(__file__), 'stocks_data.json')
+        if os.path.exists(data_file):
+            with open(data_file, 'r') as f:
+                data = json.load(f)
+                if data.get('stocks'):
+                    logger.info(f"Loaded {len(data['stocks'])} stocks from Shibui Finance data")
+                    return data['stocks']
+    except Exception as e:
+        logger.error(f"Error loading stocks data: {e}")
 
-def get_trading212_headers():
-    """Generate Basic Auth header for Trading 212 API"""
-    if not API_KEY or not API_SECRET:
-        logger.warning("Trading 212 credentials not configured")
-        return None
-    credentials = f"{API_KEY}:{API_SECRET}"
-    encoded = base64.b64encode(credentials.encode()).decode()
-    return {
-        'Authorization': f'Basic {encoded}',
-        'Content-Type': 'application/json'
-    }
+    logger.warning("No real stock data available - please populate stocks_data.json")
+    return []
 
-# Fetch real data from Trading 212 API with retries
-def get_stock_info(ticker, max_retries=2):
-    """Fetch real stock data from Trading 212 with retry logic"""
-    headers = get_trading212_headers()
-    if not headers:
-        logger.error(f"Cannot fetch {ticker}: Trading 212 credentials not configured")
-        return None
-
-    # Convert ticker format for Trading 212 (e.g., AAPL -> AAPL_US_EQ)
-    t212_ticker = f"{ticker}_US_EQ"
-
-    for attempt in range(max_retries):
-        try:
-            time.sleep(0.5)  # Rate limiting delay
-
-            # Attempt to fetch instrument data from Trading 212
-            # Using the instruments endpoint to get stock price and metrics
-            url = f"{API_BASE_URL}/api/v0/equity/instruments/{t212_ticker}"
-            response = requests.get(url, headers=headers, timeout=10)
-
-            # Check rate limit headers
-            if 'x-ratelimit-remaining' in response.headers:
-                remaining = response.headers.get('x-ratelimit-remaining')
-                logger.info(f"Rate limit remaining: {remaining}")
-
-            if response.status_code == 200:
-                data = response.json()
-
-                price = data.get('last', 0)
-                # For now, calculate estimates from available data
-                # In production, you'd fetch these from separate endpoints
-                target = price * 1.1 if price else 0
-                pe = data.get('peRatio', 0) or 0
-                market_cap = data.get('marketCap', 0)
-                dividend = data.get('dividendYield', 0) or 0
-
-                fifty_two_week_low = data.get('low52w', price * 0.8) if price else 0
-                fifty_two_week_high = data.get('high52w', price * 1.2) if price else 0
-
-                upside = round((target - price) / price * 100, 1) if price else 0
-                market_cap_b = round(market_cap / 1_000_000_000, 1) if market_cap else 0
-                div_yield = round((dividend * 100), 2) if dividend else 0
-
-                return {
-                    'price': round(price, 2),
-                    'target': round(target, 2),
-                    'upside': upside,
-                    'low_52w': round(fifty_two_week_low, 2),
-                    'high_52w': round(fifty_two_week_high, 2),
-                    'market_cap': market_cap_b,
-                    'dividend': div_yield,
-                    'pe_ratio': round(pe, 2) if pe else 0
-                }
-            elif response.status_code == 401:
-                logger.error(f"Authentication failed for {ticker}: Check Trading 212 credentials")
-                return None
-            elif response.status_code == 429:
-                logger.warning(f"Rate limit exceeded for {ticker}")
-                if attempt < max_retries - 1:
-                    time.sleep(2)
-                continue
-            else:
-                logger.error(f"API error for {ticker}: {response.status_code} - {response.text}")
-                if attempt < max_retries - 1:
-                    time.sleep(1)
-                continue
-
-        except requests.exceptions.ConnectionError as e:
-            logger.error(f"Connection error for {ticker}: {e}")
-            if attempt < max_retries - 1:
-                time.sleep(1)
-            continue
-        except Exception as e:
-            logger.error(f"Attempt {attempt + 1} failed for {ticker}: {e}")
-            if attempt < max_retries - 1:
-                time.sleep(1)
-            continue
-
-    logger.error(f"Failed to fetch {ticker} after {max_retries} attempts")
-    return None
-
->>>>>>> Stashed changes
-STOCKS = [
-    {"ticker": "AAPL", "name": "Apple Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Apple news", "url": "https://finance.yahoo.com/quote/AAPL/news"}]},
-    {"ticker": "MSFT", "name": "Microsoft Corporation", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Microsoft news", "url": "https://finance.yahoo.com/quote/MSFT/news"}]},
-    {"ticker": "GOOGL", "name": "Alphabet Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Alphabet news", "url": "https://finance.yahoo.com/quote/GOOGL/news"}]},
-    {"ticker": "GOOG", "name": "Alphabet Inc. (Class C)", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Alphabet news", "url": "https://finance.yahoo.com/quote/GOOG/news"}]},
-    {"ticker": "META", "name": "Meta Platforms", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Meta news", "url": "https://finance.yahoo.com/quote/META/news"}]},
-    {"ticker": "NVDA", "name": "NVIDIA Corporation", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "NVIDIA news", "url": "https://finance.yahoo.com/quote/NVDA/news"}]},
-    {"ticker": "INTC", "name": "Intel Corporation", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Intel news", "url": "https://finance.yahoo.com/quote/INTC/news"}]},
-    {"ticker": "AMD", "name": "Advanced Micro Devices", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "AMD news", "url": "https://finance.yahoo.com/quote/AMD/news"}]},
-    {"ticker": "QCOM", "name": "Qualcomm", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Qualcomm news", "url": "https://finance.yahoo.com/quote/QCOM/news"}]},
-    {"ticker": "CSCO", "name": "Cisco Systems", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Cisco news", "url": "https://finance.yahoo.com/quote/CSCO/news"}]},
-    {"ticker": "CRM", "name": "Salesforce", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Salesforce news", "url": "https://finance.yahoo.com/quote/CRM/news"}]},
-    {"ticker": "ORCL", "name": "Oracle", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Oracle news", "url": "https://finance.yahoo.com/quote/ORCL/news"}]},
-    {"ticker": "SAP", "name": "SAP SE", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "SAP news", "url": "https://finance.yahoo.com/quote/SAP/news"}]},
-    {"ticker": "ADBE", "name": "Adobe Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Adobe news", "url": "https://finance.yahoo.com/quote/ADBE/news"}]},
-    {"ticker": "NOW", "name": "ServiceNow", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "ServiceNow news", "url": "https://finance.yahoo.com/quote/NOW/news"}]},
-    {"ticker": "SHOP", "name": "Shopify", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Shopify news", "url": "https://finance.yahoo.com/quote/SHOP/news"}]},
-    {"ticker": "SPOT", "name": "Spotify", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Spotify news", "url": "https://finance.yahoo.com/quote/SPOT/news"}]},
-    {"ticker": "NFLX", "name": "Netflix Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Netflix news", "url": "https://finance.yahoo.com/quote/NFLX/news"}]},
-    {"ticker": "ROKU", "name": "Roku", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Roku news", "url": "https://finance.yahoo.com/quote/ROKU/news"}]},
-    {"ticker": "TWTR", "name": "Twitter", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Twitter news", "url": "https://finance.yahoo.com/quote/TWTR/news"}]},
-    {"ticker": "SNAP", "name": "Snap Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Snap news", "url": "https://finance.yahoo.com/quote/SNAP/news"}]},
-    {"ticker": "PINS", "name": "Pinterest", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Pinterest news", "url": "https://finance.yahoo.com/quote/PINS/news"}]},
-    {"ticker": "IBM", "name": "IBM", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "IBM news", "url": "https://finance.yahoo.com/quote/IBM/news"}]},
-    {"ticker": "ASML", "name": "ASML Holding", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "ASML news", "url": "https://finance.yahoo.com/quote/ASML/news"}]},
-    {"ticker": "TSMC", "name": "Taiwan Semiconductor", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "TSMC news", "url": "https://finance.yahoo.com/quote/TSM/news"}]},
-    {"ticker": "MSTR", "name": "MicroStrategy", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "MicroStrategy news", "url": "https://finance.yahoo.com/quote/MSTR/news"}]},
-    {"ticker": "PYPL", "name": "PayPal", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "PayPal news", "url": "https://finance.yahoo.com/quote/PYPL/news"}]},
-    {"ticker": "COIN", "name": "Coinbase", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Coinbase news", "url": "https://finance.yahoo.com/quote/COIN/news"}]},
-    {"ticker": "DELL", "name": "Dell Technologies", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Dell news", "url": "https://finance.yahoo.com/quote/DELL/news"}]},
-    {"ticker": "HPQ", "name": "HP Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "HP news", "url": "https://finance.yahoo.com/quote/HPQ/news"}]},
-    {"ticker": "AVGO", "name": "Broadcom Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Broadcom news", "url": "https://finance.yahoo.com/quote/AVGO/news"}]},
-    {"ticker": "MU", "name": "Micron Technology", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Micron news", "url": "https://finance.yahoo.com/quote/MU/news"}]},
-    {"ticker": "LRCX", "name": "Lam Research", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Lam Research news", "url": "https://finance.yahoo.com/quote/LRCX/news"}]},
-    {"ticker": "KLAC", "name": "KLA Corporation", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "KLA news", "url": "https://finance.yahoo.com/quote/KLAC/news"}]},
-    {"ticker": "ANET", "name": "Arista Networks", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Arista news", "url": "https://finance.yahoo.com/quote/ANET/news"}]},
-    {"ticker": "CCI", "name": "Crown Castle", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Crown Castle news", "url": "https://finance.yahoo.com/quote/CCI/news"}]},
-    {"ticker": "AMT", "name": "American Tower", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "American Tower news", "url": "https://finance.yahoo.com/quote/AMT/news"}]},
-    {"ticker": "PCAR", "name": "PACCAR Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "PACCAR news", "url": "https://finance.yahoo.com/quote/PCAR/news"}]},
-    {"ticker": "FTNT", "name": "Fortinet", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Fortinet news", "url": "https://finance.yahoo.com/quote/FTNT/news"}]},
-    {"ticker": "OKTA", "name": "Okta Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Okta news", "url": "https://finance.yahoo.com/quote/OKTA/news"}]},
-    {"ticker": "JNJ", "name": "Johnson & Johnson", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Johnson & Johnson news", "url": "https://finance.yahoo.com/quote/JNJ/news"}]},
-    {"ticker": "UNH", "name": "UnitedHealth Group", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "UnitedHealth news", "url": "https://finance.yahoo.com/quote/UNH/news"}]},
-    {"ticker": "PFE", "name": "Pfizer Inc.", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Pfizer news", "url": "https://finance.yahoo.com/quote/PFE/news"}]},
-    {"ticker": "MRK", "name": "Merck & Co.", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Merck news", "url": "https://finance.yahoo.com/quote/MRK/news"}]},
-    {"ticker": "AZN", "name": "AstraZeneca", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "AstraZeneca news", "url": "https://finance.yahoo.com/quote/AZN/news"}]},
-    {"ticker": "LLY", "name": "Eli Lilly", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Eli Lilly news", "url": "https://finance.yahoo.com/quote/LLY/news"}]},
-    {"ticker": "ABBV", "name": "AbbVie Inc.", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "AbbVie news", "url": "https://finance.yahoo.com/quote/ABBV/news"}]},
-    {"ticker": "AMGN", "name": "Amgen Inc.", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Amgen news", "url": "https://finance.yahoo.com/quote/AMGN/news"}]},
-    {"ticker": "GILD", "name": "Gilead Sciences", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Gilead news", "url": "https://finance.yahoo.com/quote/GILD/news"}]},
-    {"ticker": "BIIB", "name": "Biogen Inc.", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Biogen news", "url": "https://finance.yahoo.com/quote/BIIB/news"}]},
-    {"ticker": "VRTX", "name": "Vertex Pharmaceuticals", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Vertex news", "url": "https://finance.yahoo.com/quote/VRTX/news"}]},
-    {"ticker": "REGN", "name": "Regeneron Pharmaceuticals", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Regeneron news", "url": "https://finance.yahoo.com/quote/REGN/news"}]},
-    {"ticker": "BNTX", "name": "BioNTech", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "BioNTech news", "url": "https://finance.yahoo.com/quote/BNTX/news"}]},
-    {"ticker": "BMY", "name": "Bristol Myers Squibb", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Bristol Myers news", "url": "https://finance.yahoo.com/quote/BMY/news"}]},
-    {"ticker": "CI", "name": "Cigna Group", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Cigna news", "url": "https://finance.yahoo.com/quote/CI/news"}]},
-    {"ticker": "HUM", "name": "Humana Inc.", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Humana news", "url": "https://finance.yahoo.com/quote/HUM/news"}]},
-    {"ticker": "CAH", "name": "Cardinal Health", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Cardinal Health news", "url": "https://finance.yahoo.com/quote/CAH/news"}]},
-    {"ticker": "MCK", "name": "McKesson Corporation", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "McKesson news", "url": "https://finance.yahoo.com/quote/MCK/news"}]},
-    {"ticker": "TMDX", "name": "TransMedics", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "TransMedics news", "url": "https://finance.yahoo.com/quote/TMDX/news"}]},
-    {"ticker": "MRNA", "name": "Moderna", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Moderna news", "url": "https://finance.yahoo.com/quote/MRNA/news"}]},
-    {"ticker": "CRSP", "name": "CRISPR Therapeutics", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "CRISPR news", "url": "https://finance.yahoo.com/quote/CRSP/news"}]},
-    {"ticker": "EDIT", "name": "Editas Medicine", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Editas news", "url": "https://finance.yahoo.com/quote/EDIT/news"}]},
-    {"ticker": "BEAM", "name": "Beam Therapeutics", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Beam news", "url": "https://finance.yahoo.com/quote/BEAM/news"}]},
-    {"ticker": "IOVA", "name": "Iovance Biotherapeutics", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Iovance news", "url": "https://finance.yahoo.com/quote/IOVA/news"}]},
-    {"ticker": "XRAY", "name": "Analogic Corporation", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Analogic news", "url": "https://finance.yahoo.com/quote/XRAY/news"}]},
-    {"ticker": "DGX", "name": "Quest Diagnostics", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Quest Diagnostics news", "url": "https://finance.yahoo.com/quote/DGX/news"}]},
-    {"ticker": "LH", "name": "LabCorp", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "LabCorp news", "url": "https://finance.yahoo.com/quote/LH/news"}]},
-    {"ticker": "TMO", "name": "Thermo Fisher Scientific", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Thermo Fisher news", "url": "https://finance.yahoo.com/quote/TMO/news"}]},
-    {"ticker": "IVZ", "name": "Invitrogen", "industry": "Healthcare", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Invitrogen news", "url": "https://finance.yahoo.com/quote/IVZ/news"}]},
-    {"ticker": "JPM", "name": "JPMorgan Chase", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "JPMorgan news", "url": "https://finance.yahoo.com/quote/JPM/news"}]},
-    {"ticker": "BAC", "name": "Bank of America", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Bank of America news", "url": "https://finance.yahoo.com/quote/BAC/news"}]},
-    {"ticker": "WFC", "name": "Wells Fargo", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Wells Fargo news", "url": "https://finance.yahoo.com/quote/WFC/news"}]},
-    {"ticker": "GS", "name": "Goldman Sachs", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Goldman Sachs news", "url": "https://finance.yahoo.com/quote/GS/news"}]},
-    {"ticker": "MS", "name": "Morgan Stanley", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Morgan Stanley news", "url": "https://finance.yahoo.com/quote/MS/news"}]},
-    {"ticker": "BLK", "name": "BlackRock Inc.", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "BlackRock news", "url": "https://finance.yahoo.com/quote/BLK/news"}]},
-    {"ticker": "V", "name": "Visa Inc.", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Visa news", "url": "https://finance.yahoo.com/quote/V/news"}]},
-    {"ticker": "MA", "name": "Mastercard", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Mastercard news", "url": "https://finance.yahoo.com/quote/MA/news"}]},
-    {"ticker": "AXP", "name": "American Express", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "American Express news", "url": "https://finance.yahoo.com/quote/AXP/news"}]},
-    {"ticker": "SQ", "name": "Square Inc.", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Square news", "url": "https://finance.yahoo.com/quote/SQ/news"}]},
-    {"ticker": "HOOD", "name": "Robinhood Markets", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Robinhood news", "url": "https://finance.yahoo.com/quote/HOOD/news"}]},
-    {"ticker": "IBKR", "name": "Interactive Brokers", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Interactive Brokers news", "url": "https://finance.yahoo.com/quote/IBKR/news"}]},
-    {"ticker": "SCHW", "name": "Charles Schwab", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Charles Schwab news", "url": "https://finance.yahoo.com/quote/SCHW/news"}]},
-    {"ticker": "CME", "name": "CME Group", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "CME Group news", "url": "https://finance.yahoo.com/quote/CME/news"}]},
-    {"ticker": "ICE", "name": "Intercontinental Exchange", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "ICE news", "url": "https://finance.yahoo.com/quote/ICE/news"}]},
-    {"ticker": "NYEX", "name": "New York Stock Exchange", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "NYSE news", "url": "https://finance.yahoo.com/quote/NYEX/news"}]},
-    {"ticker": "CBOE", "name": "Cboe Global Markets", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Cboe news", "url": "https://finance.yahoo.com/quote/CBOE/news"}]},
-    {"ticker": "MCO", "name": "Moody's Corporation", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Moody's news", "url": "https://finance.yahoo.com/quote/MCO/news"}]},
-    {"ticker": "SPGI", "name": "S&P Global", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "S&P Global news", "url": "https://finance.yahoo.com/quote/SPGI/news"}]},
-    {"ticker": "PS", "name": "Parsons Corporation", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Parsons news", "url": "https://finance.yahoo.com/quote/PS/news"}]},
-    {"ticker": "AIG", "name": "American International Group", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "AIG news", "url": "https://finance.yahoo.com/quote/AIG/news"}]},
-    {"ticker": "PRU", "name": "Prudential Financial", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Prudential news", "url": "https://finance.yahoo.com/quote/PRU/news"}]},
-    {"ticker": "MET", "name": "MetLife Inc.", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "MetLife news", "url": "https://finance.yahoo.com/quote/MET/news"}]},
-    {"ticker": "LPL", "name": "LPL Financial", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "LPL Financial news", "url": "https://finance.yahoo.com/quote/LPL/news"}]},
-    {"ticker": "COIN2", "name": "Coinbase Global", "industry": "Financials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Coinbase news", "url": "https://finance.yahoo.com/quote/COIN/news"}]},
-    {"ticker": "MCD", "name": "McDonald's", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "McDonald's news", "url": "https://finance.yahoo.com/quote/MCD/news"}]},
-    {"ticker": "SBUX", "name": "Starbucks", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Starbucks news", "url": "https://finance.yahoo.com/quote/SBUX/news"}]},
-    {"ticker": "NKE", "name": "Nike", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Nike news", "url": "https://finance.yahoo.com/quote/NKE/news"}]},
-    {"ticker": "TGT", "name": "Target", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Target news", "url": "https://finance.yahoo.com/quote/TGT/news"}]},
-    {"ticker": "HD", "name": "The Home Depot", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Home Depot news", "url": "https://finance.yahoo.com/quote/HD/news"}]},
-    {"ticker": "LOW", "name": "Lowe's Companies", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Lowe's news", "url": "https://finance.yahoo.com/quote/LOW/news"}]},
-    {"ticker": "ROST", "name": "Ross Stores", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Ross Stores news", "url": "https://finance.yahoo.com/quote/ROST/news"}]},
-    {"ticker": "DIS", "name": "Disney", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Disney news", "url": "https://finance.yahoo.com/quote/DIS/news"}]},
-    {"ticker": "CMG", "name": "Chipotle Mexican Grill", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Chipotle news", "url": "https://finance.yahoo.com/quote/CMG/news"}]},
-    {"ticker": "DKNG", "name": "DraftKings", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "DraftKings news", "url": "https://finance.yahoo.com/quote/DKNG/news"}]},
-    {"ticker": "RMD", "name": "ResMed", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "ResMed news", "url": "https://finance.yahoo.com/quote/RMD/news"}]},
-    {"ticker": "ULTA", "name": "Ulta Beauty", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Ulta Beauty news", "url": "https://finance.yahoo.com/quote/ULTA/news"}]},
-    {"ticker": "FIVE", "name": "Five Below", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Five Below news", "url": "https://finance.yahoo.com/quote/FIVE/news"}]},
-    {"ticker": "EXPE", "name": "Expedia Group", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Expedia news", "url": "https://finance.yahoo.com/quote/EXPE/news"}]},
-    {"ticker": "ABNB", "name": "Airbnb", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Airbnb news", "url": "https://finance.yahoo.com/quote/ABNB/news"}]},
-    {"ticker": "LYFT", "name": "Lyft", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Lyft news", "url": "https://finance.yahoo.com/quote/LYFT/news"}]},
-    {"ticker": "GM", "name": "General Motors", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "General Motors news", "url": "https://finance.yahoo.com/quote/GM/news"}]},
-    {"ticker": "F", "name": "Ford Motor", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Ford news", "url": "https://finance.yahoo.com/quote/F/news"}]},
-    {"ticker": "TM", "name": "Toyota Motor", "industry": "Consumer Discretionary", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Toyota news", "url": "https://finance.yahoo.com/quote/TM/news"}]},
-    {"ticker": "WMT", "name": "Walmart Inc.", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Walmart news", "url": "https://finance.yahoo.com/quote/WMT/news"}]},
-    {"ticker": "COST", "name": "Costco Wholesale", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Costco news", "url": "https://finance.yahoo.com/quote/COST/news"}]},
-    {"ticker": "KO", "name": "Coca-Cola", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Coca-Cola news", "url": "https://finance.yahoo.com/quote/KO/news"}]},
-    {"ticker": "PEP", "name": "PepsiCo Inc.", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "PepsiCo news", "url": "https://finance.yahoo.com/quote/PEP/news"}]},
-    {"ticker": "MO", "name": "Altria Group", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Altria news", "url": "https://finance.yahoo.com/quote/MO/news"}]},
-    {"ticker": "PM", "name": "Philip Morris", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Philip Morris news", "url": "https://finance.yahoo.com/quote/PM/news"}]},
-    {"ticker": "CL", "name": "Colgate-Palmolive", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Colgate-Palmolive news", "url": "https://finance.yahoo.com/quote/CL/news"}]},
-    {"ticker": "PG", "name": "Procter & Gamble", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Procter & Gamble news", "url": "https://finance.yahoo.com/quote/PG/news"}]},
-    {"ticker": "KMB", "name": "Kimberly-Clark", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Kimberly-Clark news", "url": "https://finance.yahoo.com/quote/KMB/news"}]},
-    {"ticker": "EL", "name": "Estée Lauder", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Estée Lauder news", "url": "https://finance.yahoo.com/quote/EL/news"}]},
-    {"ticker": "UL", "name": "Unilever", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Unilever news", "url": "https://finance.yahoo.com/quote/UL/news"}]},
-    {"ticker": "HSY", "name": "Hershey", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Hershey news", "url": "https://finance.yahoo.com/quote/HSY/news"}]},
-    {"ticker": "MKC", "name": "McCormick & Company", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "McCormick news", "url": "https://finance.yahoo.com/quote/MKC/news"}]},
-    {"ticker": "GIS", "name": "General Mills", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "General Mills news", "url": "https://finance.yahoo.com/quote/GIS/news"}]},
-    {"ticker": "K", "name": "Kellogg Company", "industry": "Consumer Staples", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Kellogg news", "url": "https://finance.yahoo.com/quote/K/news"}]},
-    {"ticker": "BA", "name": "Boeing", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Boeing news", "url": "https://finance.yahoo.com/quote/BA/news"}]},
-    {"ticker": "CAT", "name": "Caterpillar", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Caterpillar news", "url": "https://finance.yahoo.com/quote/CAT/news"}]},
-    {"ticker": "GE", "name": "General Electric", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "General Electric news", "url": "https://finance.yahoo.com/quote/GE/news"}]},
-    {"ticker": "MMM", "name": "3M Company", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "3M news", "url": "https://finance.yahoo.com/quote/MMM/news"}]},
-    {"ticker": "RTX", "name": "Raytheon Technologies", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Raytheon news", "url": "https://finance.yahoo.com/quote/RTX/news"}]},
-    {"ticker": "LMT", "name": "Lockheed Martin", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Lockheed Martin news", "url": "https://finance.yahoo.com/quote/LMT/news"}]},
-    {"ticker": "NOC", "name": "Northrop Grumman", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Northrop Grumman news", "url": "https://finance.yahoo.com/quote/NOC/news"}]},
-    {"ticker": "GD", "name": "General Dynamics", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "General Dynamics news", "url": "https://finance.yahoo.com/quote/GD/news"}]},
-    {"ticker": "TDG", "name": "TransDigm Group", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "TransDigm news", "url": "https://finance.yahoo.com/quote/TDG/news"}]},
-    {"ticker": "LDOS", "name": "Leidos Holdings", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Leidos news", "url": "https://finance.yahoo.com/quote/LDOS/news"}]},
-    {"ticker": "AON", "name": "Aon plc", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Aon news", "url": "https://finance.yahoo.com/quote/AON/news"}]},
-    {"ticker": "BR", "name": "Broadridge Financial", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Broadridge news", "url": "https://finance.yahoo.com/quote/BR/news"}]},
-    {"ticker": "PCAR2", "name": "PACCAR Inc.", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "PACCAR news", "url": "https://finance.yahoo.com/quote/PCAR/news"}]},
-    {"ticker": "DAL", "name": "Delta Air Lines", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Delta news", "url": "https://finance.yahoo.com/quote/DAL/news"}]},
-    {"ticker": "UAL", "name": "United Airlines", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "United Airlines news", "url": "https://finance.yahoo.com/quote/UAL/news"}]},
-    {"ticker": "AAL", "name": "American Airlines", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "American Airlines news", "url": "https://finance.yahoo.com/quote/AAL/news"}]},
-    {"ticker": "LUV", "name": "Southwest Airlines", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Southwest Airlines news", "url": "https://finance.yahoo.com/quote/LUV/news"}]},
-    {"ticker": "ALK", "name": "Alaska Air Group", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Alaska Air news", "url": "https://finance.yahoo.com/quote/ALK/news"}]},
-    {"ticker": "JBLU", "name": "JetBlue Airways", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "JetBlue news", "url": "https://finance.yahoo.com/quote/JBLU/news"}]},
-    {"ticker": "FDX", "name": "FedEx Corporation", "industry": "Industrials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "FedEx news", "url": "https://finance.yahoo.com/quote/FDX/news"}]},
-    {"ticker": "XOM", "name": "Exxon Mobil", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Exxon Mobil news", "url": "https://finance.yahoo.com/quote/XOM/news"}]},
-    {"ticker": "CVX", "name": "Chevron", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Chevron news", "url": "https://finance.yahoo.com/quote/CVX/news"}]},
-    {"ticker": "COP", "name": "ConocoPhillips", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "ConocoPhillips news", "url": "https://finance.yahoo.com/quote/COP/news"}]},
-    {"ticker": "SLB", "name": "Schlumberger", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Schlumberger news", "url": "https://finance.yahoo.com/quote/SLB/news"}]},
-    {"ticker": "EOG", "name": "EOG Resources", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "EOG Resources news", "url": "https://finance.yahoo.com/quote/EOG/news"}]},
-    {"ticker": "MPC", "name": "Marathon Petroleum", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Marathon Petroleum news", "url": "https://finance.yahoo.com/quote/MPC/news"}]},
-    {"ticker": "HES", "name": "Hess Corporation", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Hess news", "url": "https://finance.yahoo.com/quote/HES/news"}]},
-    {"ticker": "OXY", "name": "Occidental Petroleum", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Occidental Petroleum news", "url": "https://finance.yahoo.com/quote/OXY/news"}]},
-    {"ticker": "PSX", "name": "Phillips 66", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Phillips 66 news", "url": "https://finance.yahoo.com/quote/PSX/news"}]},
-    {"ticker": "VLO", "name": "Valero Energy", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Valero news", "url": "https://finance.yahoo.com/quote/VLO/news"}]},
-    {"ticker": "HAL", "name": "Halliburton", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Halliburton news", "url": "https://finance.yahoo.com/quote/HAL/news"}]},
-    {"ticker": "BKR", "name": "Baker Hughes", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Baker Hughes news", "url": "https://finance.yahoo.com/quote/BKR/news"}]},
-    {"ticker": "KMI", "name": "Kinder Morgan", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Kinder Morgan news", "url": "https://finance.yahoo.com/quote/KMI/news"}]},
-    {"ticker": "MMP", "name": "Magellan Midstream Partners", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Magellan news", "url": "https://finance.yahoo.com/quote/MMP/news"}]},
-    {"ticker": "WMB", "name": "Williams Companies", "industry": "Energy", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Williams news", "url": "https://finance.yahoo.com/quote/WMB/news"}]},
-    {"ticker": "LIN", "name": "Linde plc", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Linde news", "url": "https://finance.yahoo.com/quote/LIN/news"}]},
-    {"ticker": "APD", "name": "Air Products", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Air Products news", "url": "https://finance.yahoo.com/quote/APD/news"}]},
-    {"ticker": "SHW", "name": "Sherwin-Williams", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Sherwin-Williams news", "url": "https://finance.yahoo.com/quote/SHW/news"}]},
-    {"ticker": "PPG", "name": "PPG Industries", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "PPG Industries news", "url": "https://finance.yahoo.com/quote/PPG/news"}]},
-    {"ticker": "FCX", "name": "Freeport-McMoRan", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Freeport-McMoRan news", "url": "https://finance.yahoo.com/quote/FCX/news"}]},
-    {"ticker": "SCCO", "name": "Southern Copper", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Southern Copper news", "url": "https://finance.yahoo.com/quote/SCCO/news"}]},
-    {"ticker": "STLD", "name": "Steel Dynamics", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Steel Dynamics news", "url": "https://finance.yahoo.com/quote/STLD/news"}]},
-    {"ticker": "NUE", "name": "Nucor Corporation", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Nucor news", "url": "https://finance.yahoo.com/quote/NUE/news"}]},
-    {"ticker": "EMN", "name": "Eastman Chemical", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Eastman Chemical news", "url": "https://finance.yahoo.com/quote/EMN/news"}]},
-    {"ticker": "DD", "name": "DuPont", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "DuPont news", "url": "https://finance.yahoo.com/quote/DD/news"}]},
-    {"ticker": "LAC", "name": "Lithium Americas", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Lithium Americas news", "url": "https://finance.yahoo.com/quote/LAC/news"}]},
-    {"ticker": "ALB", "name": "Albemarle Corporation", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Albemarle news", "url": "https://finance.yahoo.com/quote/ALB/news"}]},
-    {"ticker": "NRG", "name": "NRG Energy", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "NRG Energy news", "url": "https://finance.yahoo.com/quote/NRG/news"}]},
-    {"ticker": "CRS", "name": "Corsair Gaming", "industry": "Materials", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Corsair news", "url": "https://finance.yahoo.com/quote/CRS/news"}]},
-    {"ticker": "NEE", "name": "NextEra Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "NextEra news", "url": "https://finance.yahoo.com/quote/NEE/news"}]},
-    {"ticker": "DUK", "name": "Duke Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Duke Energy news", "url": "https://finance.yahoo.com/quote/DUK/news"}]},
-    {"ticker": "SO", "name": "Southern Company", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Southern Company news", "url": "https://finance.yahoo.com/quote/SO/news"}]},
-    {"ticker": "EXC", "name": "Exelon Corporation", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Exelon news", "url": "https://finance.yahoo.com/quote/EXC/news"}]},
-    {"ticker": "SRE", "name": "Sempra Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Sempra news", "url": "https://finance.yahoo.com/quote/SRE/news"}]},
-    {"ticker": "AEP", "name": "American Electric Power", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "AEP news", "url": "https://finance.yahoo.com/quote/AEP/news"}]},
-    {"ticker": "DTE", "name": "DTE Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "DTE Energy news", "url": "https://finance.yahoo.com/quote/DTE/news"}]},
-    {"ticker": "ESI", "name": "Enersis Americas", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Enersis news", "url": "https://finance.yahoo.com/quote/ESI/news"}]},
-    {"ticker": "AWK", "name": "American Water Works", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "American Water news", "url": "https://finance.yahoo.com/quote/AWK/news"}]},
-    {"ticker": "XEL", "name": "Xcel Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Xcel Energy news", "url": "https://finance.yahoo.com/quote/XEL/news"}]},
-    {"ticker": "CMS", "name": "CMS Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "CMS Energy news", "url": "https://finance.yahoo.com/quote/CMS/news"}]},
-    {"ticker": "OGE", "name": "OGE Energy", "industry": "Utilities", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "OGE Energy news", "url": "https://finance.yahoo.com/quote/OGE/news"}]},
-]
-
-
+STOCKS = load_stocks_data()
 
 @app.route('/')
 def home():
     return render_template('dashboard.html')
 
-
 @app.route('/health')
 def health():
     return jsonify({"status": "ok"})
-
 
 @app.route('/api/stocks')
 def stocks():
     return jsonify(STOCKS)
 
-
 @app.route('/api/refresh')
 def refresh():
+    global STOCKS
+    STOCKS = load_stocks_data()
     return jsonify({"success": True, "stocks": STOCKS})
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
