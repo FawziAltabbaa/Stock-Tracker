@@ -16,11 +16,17 @@
       "market_cap": 42.6,
       "dividend": 0.67,
       "pe_ratio": 29.59,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 174.4}],
-      "momentum": 72.0,
-      "valuation": 55.0,
-      "sentiment": 68.0,
-      "score": 65.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 174.4
+        }
+      ],
+      "momentum": 57.8,
+      "valuation": 55,
+      "sentiment": 55.2,
+      "score": 56.0,
       "headlines": []
     },
     {
@@ -35,11 +41,17 @@
       "market_cap": 13.2,
       "dividend": 0.8,
       "pe_ratio": 10.33,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 62.98}],
-      "momentum": 65.0,
-      "valuation": 75.0,
-      "sentiment": 70.0,
-      "score": 70.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 62.98
+        }
+      ],
+      "momentum": 63.0,
+      "valuation": 85,
+      "sentiment": 58.7,
+      "score": 68.9,
       "headlines": []
     },
     {
@@ -54,11 +66,17 @@
       "market_cap": 4699.5,
       "dividend": 0.33,
       "pe_ratio": 36.45,
-      "analysts": [{"name": "Shibui Finance", "rating": "HOLD", "target": 324.45}],
-      "momentum": 68.0,
-      "valuation": 52.0,
-      "sentiment": 70.0,
-      "score": 63.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 324.45
+        }
+      ],
+      "momentum": 50.7,
+      "valuation": 55,
+      "sentiment": 50.5,
+      "score": 52.1,
       "headlines": []
     },
     {
@@ -73,11 +91,17 @@
       "market_cap": 453.1,
       "dividend": 2.64,
       "pe_ratio": 71.81,
-      "analysts": [{"name": "Shibui Finance", "rating": "HOLD", "target": 276.59}],
-      "momentum": 62.0,
-      "valuation": 45.0,
-      "sentiment": 60.0,
-      "score": 55.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 276.59
+        }
+      ],
+      "momentum": 53.9,
+      "valuation": 40,
+      "sentiment": 52.6,
+      "score": 48.8,
       "headlines": []
     },
     {
@@ -92,11 +116,17 @@
       "market_cap": 188.7,
       "dividend": 2.26,
       "pe_ratio": 34.78,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 120.2}],
-      "momentum": 65.0,
-      "valuation": 60.0,
-      "sentiment": 68.0,
-      "score": 64.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 120.2
+        }
+      ],
+      "momentum": 55.5,
+      "valuation": 55,
+      "sentiment": 53.7,
+      "score": 54.7,
       "headlines": []
     },
     {
@@ -111,11 +141,17 @@
       "market_cap": 109.7,
       "dividend": 0.0,
       "pe_ratio": 40.75,
-      "analysts": [{"name": "Shibui Finance", "rating": "HOLD", "target": 176.76}],
-      "momentum": 58.0,
-      "valuation": 48.0,
-      "sentiment": 55.0,
-      "score": 53.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "SELL",
+          "target": 176.76
+        }
+      ],
+      "momentum": 48.6,
+      "valuation": 40,
+      "sentiment": 49.1,
+      "score": 45.9,
       "headlines": []
     },
     {
@@ -130,11 +166,17 @@
       "market_cap": 124.3,
       "dividend": 3.17,
       "pe_ratio": 15.95,
-      "analysts": [{"name": "Shibui Finance", "rating": "HOLD", "target": 184.19}],
-      "momentum": 60.0,
-      "valuation": 70.0,
-      "sentiment": 62.0,
-      "score": 64.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "SELL",
+          "target": 184.19
+        }
+      ],
+      "momentum": 49.3,
+      "valuation": 70,
+      "sentiment": 49.5,
+      "score": 56.3,
       "headlines": []
     },
     {
@@ -149,11 +191,17 @@
       "market_cap": 107.7,
       "dividend": 0.0,
       "pe_ratio": 14.89,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 275.25}],
-      "momentum": 70.0,
-      "valuation": 72.0,
-      "sentiment": 72.0,
-      "score": 71.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 275.25
+        }
+      ],
+      "momentum": 51.6,
+      "valuation": 85,
+      "sentiment": 51.1,
+      "score": 62.6,
       "headlines": []
     },
     {
@@ -168,11 +216,17 @@
       "market_cap": 176.4,
       "dividend": 1.16,
       "pe_ratio": 42.67,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 470.25}],
-      "momentum": 75.0,
-      "valuation": 58.0,
-      "sentiment": 75.0,
-      "score": 69.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 470.25
+        }
+      ],
+      "momentum": 64.9,
+      "valuation": 40,
+      "sentiment": 59.9,
+      "score": 54.9,
       "headlines": []
     },
     {
@@ -187,11 +241,17 @@
       "market_cap": 111.0,
       "dividend": 2.37,
       "pe_ratio": 25.14,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 287.6}],
-      "momentum": 68.0,
-      "valuation": 68.0,
-      "sentiment": 70.0,
-      "score": 68.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 287.6
+        }
+      ],
+      "momentum": 51.8,
+      "valuation": 55,
+      "sentiment": 51.2,
+      "score": 52.7,
       "headlines": []
     },
     {
@@ -206,11 +266,17 @@
       "market_cap": 46.0,
       "dividend": 0.0,
       "pe_ratio": 28.0,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 315.37}],
-      "momentum": 72.0,
-      "valuation": 55.0,
-      "sentiment": 73.0,
-      "score": 66.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 315.37
+        }
+      ],
+      "momentum": 72.3,
+      "valuation": 55,
+      "sentiment": 64.9,
+      "score": 64.1,
       "headlines": []
     },
     {
@@ -225,11 +291,17 @@
       "market_cap": 10.7,
       "dividend": 0.15,
       "pe_ratio": 48.69,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 429.08}],
-      "momentum": 78.0,
-      "valuation": 52.0,
-      "sentiment": 76.0,
-      "score": 68.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 429.08
+        }
+      ],
+      "momentum": 76.4,
+      "valuation": 40,
+      "sentiment": 67.6,
+      "score": 61.3,
       "headlines": []
     },
     {
@@ -244,11 +316,17 @@
       "market_cap": 102.4,
       "dividend": 0.76,
       "pe_ratio": 17.43,
-      "analysts": [{"name": "Shibui Finance", "rating": "HOLD", "target": 214.98}],
-      "momentum": 62.0,
-      "valuation": 68.0,
-      "sentiment": 65.0,
-      "score": 65.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 214.98
+        }
+      ],
+      "momentum": 52.5,
+      "valuation": 70,
+      "sentiment": 51.7,
+      "score": 58.1,
       "headlines": []
     },
     {
@@ -263,11 +341,17 @@
       "market_cap": 67.7,
       "dividend": 3.02,
       "pe_ratio": 21.57,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 144.0}],
-      "momentum": 65.0,
-      "valuation": 72.0,
-      "sentiment": 68.0,
-      "score": 68.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 144.0
+        }
+      ],
+      "momentum": 57.9,
+      "valuation": 70,
+      "sentiment": 55.2,
+      "score": 61.0,
       "headlines": []
     },
     {
@@ -282,11 +366,17 @@
       "market_cap": 40.4,
       "dividend": 2.46,
       "pe_ratio": 13.63,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 88.5}],
-      "momentum": 68.0,
-      "valuation": 75.0,
-      "sentiment": 70.0,
-      "score": 71.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 88.5
+        }
+      ],
+      "momentum": 58.0,
+      "valuation": 85,
+      "sentiment": 55.4,
+      "score": 66.1,
       "headlines": []
     },
     {
@@ -301,11 +391,17 @@
       "market_cap": 67.5,
       "dividend": 1.03,
       "pe_ratio": 42.99,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 291.56}],
-      "momentum": 68.0,
-      "valuation": 60.0,
-      "sentiment": 70.0,
-      "score": 66.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 291.56
+        }
+      ],
+      "momentum": 55.5,
+      "valuation": 40,
+      "sentiment": 53.7,
+      "score": 49.7,
       "headlines": []
     },
     {
@@ -320,11 +416,17 @@
       "market_cap": 15.3,
       "dividend": 0.0,
       "pe_ratio": 37.22,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 157.43}],
-      "momentum": 75.0,
-      "valuation": 55.0,
-      "sentiment": 76.0,
-      "score": 68.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 157.43
+        }
+      ],
+      "momentum": 74.8,
+      "valuation": 55,
+      "sentiment": 66.5,
+      "score": 65.4,
       "headlines": []
     },
     {
@@ -339,11 +441,17 @@
       "market_cap": 14.9,
       "dividend": 1.28,
       "pe_ratio": 66.43,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 172.56}],
-      "momentum": 72.0,
-      "valuation": 52.0,
-      "sentiment": 72.0,
-      "score": 65.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 172.56
+        }
+      ],
+      "momentum": 68.3,
+      "valuation": 40,
+      "sentiment": 62.2,
+      "score": 56.9,
       "headlines": []
     },
     {
@@ -358,11 +466,17 @@
       "market_cap": 34.4,
       "dividend": 0.0,
       "pe_ratio": 53.47,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 85.24}],
-      "momentum": 70.0,
-      "valuation": 50.0,
-      "sentiment": 70.0,
-      "score": 63.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 85.24
+        }
+      ],
+      "momentum": 60.5,
+      "valuation": 40,
+      "sentiment": 57.0,
+      "score": 52.5,
       "headlines": []
     },
     {
@@ -377,11 +491,17 @@
       "market_cap": 66.8,
       "dividend": 1.6,
       "pe_ratio": 5.02,
-      "analysts": [{"name": "Shibui Finance", "rating": "HOLD", "target": 274.09}],
-      "momentum": 62.0,
-      "valuation": 85.0,
-      "sentiment": 65.0,
-      "score": 70.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 274.09
+        }
+      ],
+      "momentum": 52.8,
+      "valuation": 85,
+      "sentiment": 51.9,
+      "score": 63.2,
       "headlines": []
     },
     {
@@ -396,11 +516,242 @@
       "market_cap": 0.7,
       "dividend": 0.0,
       "pe_ratio": 0.0,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 9.0}],
-      "momentum": 80.0,
-      "valuation": 20.0,
-      "sentiment": 75.0,
-      "score": 58.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 9.0
+        }
+      ],
+      "momentum": 95,
+      "valuation": 40,
+      "sentiment": 95,
+      "score": 76.7,
+      "headlines": []
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices Inc",
+      "industry": "Semiconductors & Semiconductor Equipment",
+      "price": 477.57,
+      "target": 613.84,
+      "upside": 28.5,
+      "low_52w": 149.22,
+      "high_52w": 584.73,
+      "market_cap": 778.7,
+      "dividend": 0.0,
+      "pe_ratio": 121.03,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 613.84
+        }
+      ],
+      "momentum": 64.2,
+      "valuation": 40,
+      "sentiment": 59.5,
+      "score": 54.6,
+      "headlines": []
+    },
+    {
+      "ticker": "BAC",
+      "name": "Bank Of America Corp",
+      "industry": "Banks",
+      "price": 62.68,
+      "target": 68.77,
+      "upside": 9.7,
+      "low_52w": 46.12,
+      "high_52w": 65.22,
+      "market_cap": 444.8,
+      "dividend": 2.2,
+      "pe_ratio": 13.22,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 68.77
+        }
+      ],
+      "momentum": 54.9,
+      "valuation": 85,
+      "sentiment": 53.2,
+      "score": 64.4,
+      "headlines": []
+    },
+    {
+      "ticker": "COIN",
+      "name": "Coinbase Global Inc - Class A",
+      "industry": "Capital Markets",
+      "price": 184.64,
+      "target": 196.55,
+      "upside": 6.5,
+      "low_52w": 139.11,
+      "high_52w": 402.16,
+      "market_cap": 48.6,
+      "dividend": 0.0,
+      "pe_ratio": 0.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 196.55
+        }
+      ],
+      "momentum": 53.2,
+      "valuation": 40,
+      "sentiment": 52.2,
+      "score": 48.5,
+      "headlines": []
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce Inc",
+      "industry": "Software",
+      "price": 259.23,
+      "target": 262.54,
+      "upside": 1.3,
+      "low_52w": 146.32,
+      "high_52w": 269.11,
+      "market_cap": 212.3,
+      "dividend": 0.71,
+      "pe_ratio": 21.97,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 262.54
+        }
+      ],
+      "momentum": 50.6,
+      "valuation": 70,
+      "sentiment": 50.4,
+      "score": 57.0,
+      "headlines": []
+    },
+    {
+      "ticker": "CSCO",
+      "name": "Cisco Systems Inc",
+      "industry": "Communications Equipment",
+      "price": 109.2,
+      "target": 137.74,
+      "upside": 26.1,
+      "low_52w": 66.13,
+      "high_52w": 130.37,
+      "market_cap": 430.4,
+      "dividend": 1.52,
+      "pe_ratio": 32.44,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 137.74
+        }
+      ],
+      "momentum": 63.0,
+      "valuation": 55,
+      "sentiment": 58.7,
+      "score": 58.9,
+      "headlines": []
+    },
+    {
+      "ticker": "DIS",
+      "name": "Walt Disney Co (The)",
+      "industry": "Entertainment",
+      "price": 105.31,
+      "target": 127.84,
+      "upside": 21.4,
+      "low_52w": 92.19,
+      "high_52w": 119.05,
+      "market_cap": 182.9,
+      "dividend": 1.22,
+      "pe_ratio": 21.26,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 127.84
+        }
+      ],
+      "momentum": 60.7,
+      "valuation": 70,
+      "sentiment": 57.1,
+      "score": 62.6,
+      "headlines": []
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel Corp",
+      "industry": "Semiconductors & Semiconductor Equipment",
+      "price": 95.8,
+      "target": 114.88,
+      "upside": 19.9,
+      "low_52w": 24.05,
+      "high_52w": 142.35,
+      "market_cap": 481.5,
+      "dividend": 0.0,
+      "pe_ratio": 0.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 114.88
+        }
+      ],
+      "momentum": 60.0,
+      "valuation": 40,
+      "sentiment": 56.6,
+      "score": 52.2,
+      "headlines": []
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase & Company",
+      "industry": "Banks",
+      "price": 358.64,
+      "target": 374.57,
+      "upside": 4.4,
+      "low_52w": 279.1,
+      "high_52w": 366.5,
+      "market_cap": 961.0,
+      "dividend": 1.8,
+      "pe_ratio": 15.1,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 374.57
+        }
+      ],
+      "momentum": 52.2,
+      "valuation": 70,
+      "sentiment": 51.5,
+      "score": 57.9,
+      "headlines": []
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard Incorporated - Class A",
+      "industry": "Financial Services",
+      "price": 579.21,
+      "target": 669.46,
+      "upside": 15.6,
+      "low_52w": 464.52,
+      "high_52w": 601.62,
+      "market_cap": 511.8,
+      "dividend": 0.57,
+      "pe_ratio": 31.48,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 669.46
+        }
+      ],
+      "momentum": 57.8,
+      "valuation": 55,
+      "sentiment": 55.2,
+      "score": 56.0,
       "headlines": []
     },
     {
@@ -415,68 +766,267 @@
       "market_cap": 3277.6,
       "dividend": 3.04,
       "pe_ratio": 40.12,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 455.0}],
-      "momentum": 68.0,
-      "valuation": 58.0,
-      "sentiment": 72.0,
-      "score": 66.0,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 455.0
+        }
+      ],
+      "momentum": 51.6,
+      "valuation": 40,
+      "sentiment": 51.1,
+      "score": 47.6,
       "headlines": []
     },
     {
-      "ticker": "META",
-      "name": "Meta Platforms Inc",
-      "industry": "Communication Services",
-      "price": 612.45,
-      "target": 635.0,
-      "upside": 3.7,
-      "low_52w": 380.0,
-      "high_52w": 650.0,
-      "market_cap": 1850.0,
+      "ticker": "NFLX",
+      "name": "Netflix Inc",
+      "industry": "Entertainment",
+      "price": 78.25,
+      "target": 93.66,
+      "upside": 19.7,
+      "low_52w": 65.08,
+      "high_52w": 126.7,
+      "market_cap": 329.7,
       "dividend": 0.0,
-      "pe_ratio": 28.5,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 635.0}],
-      "momentum": 70.0,
-      "valuation": 62.0,
-      "sentiment": 72.0,
-      "score": 68.0,
+      "pe_ratio": 24.15,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 93.66
+        }
+      ],
+      "momentum": 59.9,
+      "valuation": 70,
+      "sentiment": 56.6,
+      "score": 62.1,
+      "headlines": []
+    },
+    {
+      "ticker": "NKE",
+      "name": "Nike Inc - Class B",
+      "industry": "Textiles, Apparel & Luxury Goods",
+      "price": 38.4,
+      "target": 50.52,
+      "upside": 31.6,
+      "low_52w": 37.95,
+      "high_52w": 76.97,
+      "market_cap": 56.9,
+      "dividend": 4.23,
+      "pe_ratio": 18.3,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 50.52
+        }
+      ],
+      "momentum": 65.8,
+      "valuation": 70,
+      "sentiment": 60.5,
+      "score": 65.4,
       "headlines": []
     },
     {
       "ticker": "NVDA",
-      "name": "NVIDIA Corporation",
+      "name": "NVIDIA Corp",
       "industry": "Semiconductors & Semiconductor Equipment",
-      "price": 144.28,
-      "target": 160.0,
-      "upside": 10.9,
-      "low_52w": 85.0,
-      "high_52w": 220.0,
-      "market_cap": 3560.0,
-      "dividend": 0.04,
-      "pe_ratio": 65.2,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 160.0}],
-      "momentum": 72.0,
-      "valuation": 48.0,
-      "sentiment": 75.0,
-      "score": 65.0,
+      "price": 230.36,
+      "target": 323.42,
+      "upside": 40.4,
+      "low_52w": 164.27,
+      "high_52w": 236.54,
+      "market_cap": 5574.7,
+      "dividend": 0.12,
+      "pe_ratio": 28.9,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 323.42
+        }
+      ],
+      "momentum": 70.2,
+      "valuation": 55,
+      "sentiment": 63.5,
+      "score": 62.9,
       "headlines": []
     },
     {
-      "ticker": "GOOGL",
-      "name": "Alphabet Inc",
-      "industry": "Communication Services",
-      "price": 215.43,
-      "target": 230.0,
-      "upside": 6.8,
-      "low_52w": 155.0,
-      "high_52w": 245.0,
-      "market_cap": 1420.0,
+      "ticker": "ORCL",
+      "name": "Oracle Corp",
+      "industry": "Software",
+      "price": 158.78,
+      "target": 244.12,
+      "upside": 53.7,
+      "low_52w": 114.5,
+      "high_52w": 345.72,
+      "market_cap": 456.7,
+      "dividend": 1.27,
+      "pe_ratio": 26.73,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 244.12
+        }
+      ],
+      "momentum": 76.8,
+      "valuation": 55,
+      "sentiment": 67.9,
+      "score": 66.6,
+      "headlines": []
+    },
+    {
+      "ticker": "PYPL",
+      "name": "PayPal Holdings Inc",
+      "industry": "Financial Services",
+      "price": 54.96,
+      "target": 60.2,
+      "upside": 9.5,
+      "low_52w": 38.46,
+      "high_52w": 79.22,
+      "market_cap": 48.5,
+      "dividend": 0.79,
+      "pe_ratio": 9.89,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 60.2
+        }
+      ],
+      "momentum": 54.8,
+      "valuation": 85,
+      "sentiment": 53.2,
+      "score": 64.3,
+      "headlines": []
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm Inc",
+      "industry": "Semiconductors & Semiconductor Equipment",
+      "price": 168.74,
+      "target": 193.1,
+      "upside": 14.4,
+      "low_52w": 121.99,
+      "high_52w": 259.92,
+      "market_cap": 177.9,
+      "dividend": 2.15,
+      "pe_ratio": 19.21,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 193.1
+        }
+      ],
+      "momentum": 57.2,
+      "valuation": 70,
+      "sentiment": 54.8,
+      "score": 60.7,
+      "headlines": []
+    },
+    {
+      "ticker": "SBUX",
+      "name": "Starbucks Corp",
+      "industry": "Hotels, Restaurants & Leisure",
+      "price": 104.47,
+      "target": 112.23,
+      "upside": 7.4,
+      "low_52w": 77.99,
+      "high_52w": 110.51,
+      "market_cap": 119.1,
+      "dividend": 2.36,
+      "pe_ratio": 60.05,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 112.23
+        }
+      ],
+      "momentum": 53.7,
+      "valuation": 40,
+      "sentiment": 52.5,
+      "score": 48.7,
+      "headlines": []
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify Inc - Class A",
+      "industry": "IT Services",
+      "price": 145.09,
+      "target": 171.15,
+      "upside": 18.0,
+      "low_52w": 94.0,
+      "high_52w": 182.19,
+      "market_cap": 188.3,
       "dividend": 0.0,
-      "pe_ratio": 22.1,
-      "analysts": [{"name": "Shibui Finance", "rating": "BUY", "target": 230.0}],
-      "momentum": 70.0,
-      "valuation": 70.0,
-      "sentiment": 72.0,
-      "score": 70.0,
+      "pe_ratio": 97.65,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 171.15
+        }
+      ],
+      "momentum": 59.0,
+      "valuation": 40,
+      "sentiment": 56.0,
+      "score": 51.7,
+      "headlines": []
+    },
+    {
+      "ticker": "V",
+      "name": "Visa Inc - Class A",
+      "industry": "Financial Services",
+      "price": 375.07,
+      "target": 417.9,
+      "upside": 11.4,
+      "low_52w": 293.89,
+      "high_52w": 385.57,
+      "market_cap": 682.9,
+      "dividend": 0.73,
+      "pe_ratio": 30.23,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 417.9
+        }
+      ],
+      "momentum": 55.7,
+      "valuation": 55,
+      "sentiment": 53.8,
+      "score": 54.8,
+      "headlines": []
+    },
+    {
+      "ticker": "WFC",
+      "name": "Wells Fargo & Company",
+      "industry": "Banks",
+      "price": 89.97,
+      "target": 100.24,
+      "upside": 11.4,
+      "low_52w": 72.78,
+      "high_52w": 97.76,
+      "market_cap": 275.3,
+      "dividend": 2.39,
+      "pe_ratio": 12.18,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 100.24
+        }
+      ],
+      "momentum": 55.7,
+      "valuation": 85,
+      "sentiment": 53.8,
+      "score": 64.8,
       "headlines": []
     }
   ]
