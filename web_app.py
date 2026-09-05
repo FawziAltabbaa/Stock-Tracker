@@ -3,46 +3,55 @@ from flask import Flask, render_template, jsonify
 import yfinance as yf
 from functools import lru_cache
 import logging
+import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__, template_folder='templates')
 
-@lru_cache(maxsize=200)
-def get_stock_info(ticker):
-    """Fetch real stock data from Yahoo Finance with caching"""
-    try:
-        stock = yf.Ticker(ticker)
-        info = stock.info
+# Fetch real data with retries and delays to avoid rate limiting
+def get_stock_info(ticker, max_retries=2):
+    """Fetch real stock data from Yahoo Finance with retry logic and delays"""
+    for attempt in range(max_retries):
+        try:
+            # Add delay between requests to avoid rate limiting
+            time.sleep(0.5)
 
-        price = info.get('currentPrice', 0) or info.get('regularMarketPrice', 0)
-        target = info.get('targetMeanPrice', price * 1.1)
-        pe = info.get('trailingPE', 0) or info.get('forwardPE', 0)
-        market_cap = info.get('marketCap', 0)
-        dividend = info.get('dividendRate', 0) or 0
+            stock = yf.Ticker(ticker)
+            info = stock.info
 
-        # 52-week data
-        fifty_two_week_low = info.get('fiftyTwoWeekLow', price * 0.8)
-        fifty_two_week_high = info.get('fiftyTwoWeekHigh', price * 1.2)
+            price = info.get('currentPrice', 0) or info.get('regularMarketPrice', 0)
+            target = info.get('targetMeanPrice', price * 1.1)
+            pe = info.get('trailingPE', 0) or info.get('forwardPE', 0)
+            market_cap = info.get('marketCap', 0)
+            dividend = info.get('dividendRate', 0) or 0
 
-        upside = round((target - price) / price * 100, 1) if price else 0
-        market_cap_b = round(market_cap / 1_000_000_000, 1) if market_cap else 0
-        div_yield = round((dividend / price * 100), 2) if price else 0
+            # 52-week data
+            fifty_two_week_low = info.get('fiftyTwoWeekLow', price * 0.8)
+            fifty_two_week_high = info.get('fiftyTwoWeekHigh', price * 1.2)
 
-        return {
-            'price': round(price, 2),
-            'target': round(target, 2),
-            'upside': upside,
-            'low_52w': round(fifty_two_week_low, 2),
-            'high_52w': round(fifty_two_week_high, 2),
-            'market_cap': market_cap_b,
-            'dividend': div_yield,
-            'pe_ratio': round(pe, 2) if pe else 0
-        }
-    except Exception as e:
-        logger.error(f"Error fetching data for {ticker}: {e}")
-        return None
+            upside = round((target - price) / price * 100, 1) if price else 0
+            market_cap_b = round(market_cap / 1_000_000_000, 1) if market_cap else 0
+            div_yield = round((dividend / price * 100), 2) if price else 0
+
+            return {
+                'price': round(price, 2),
+                'target': round(target, 2),
+                'upside': upside,
+                'low_52w': round(fifty_two_week_low, 2),
+                'high_52w': round(fifty_two_week_high, 2),
+                'market_cap': market_cap_b,
+                'dividend': div_yield,
+                'pe_ratio': round(pe, 2) if pe else 0
+            }
+        except Exception as e:
+            logger.error(f"Attempt {attempt + 1} failed for {ticker}: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(1)  # Wait longer before retry
+            continue
+
+    return None
 
 STOCKS = [
     {"ticker": "AAPL", "name": "Apple Inc.", "industry": "Technology", "price": 337.74, "target": 399.01, "upside": 18.1, "low_52w": 236.42, "high_52w": 439.06, "market_cap": 75.5, "dividend": 0.89, "pe_ratio": 24.05, "headlines": [{"title": "View on Yahoo Finance", "url": "https://finance.yahoo.com/quote/AAPL/news"}], "analysts": {"buy": 30, "hold": 13, "sell": 57}},
@@ -250,15 +259,17 @@ def health():
 
 @app.route('/api/stocks')
 def stocks():
-    # Enrich stocks with real data and add analyst ratings
+    # Fetch real data with delays to avoid rate limiting
     enriched = []
-    for stock in STOCKS:
+    for i, stock in enumerate(STOCKS):
         enriched_stock = stock.copy()
-        # Merge with real data
         real_data = get_stock_info(stock['ticker'])
         if real_data:
             enriched_stock.update(real_data)
         enriched.append(enriched_stock)
+        # Log progress
+        if (i + 1) % 25 == 0:
+            logger.info(f"Loaded {i + 1}/{len(STOCKS)} stocks")
     return jsonify(enriched)
 
 
@@ -270,7 +281,17 @@ def industries():
 
 @app.route('/api/refresh')
 def refresh():
-    return jsonify({"success": True, "stocks": STOCKS})
+    # Refresh data by fetching from yfinance with delays
+    enriched = []
+    for i, stock in enumerate(STOCKS):
+        enriched_stock = stock.copy()
+        real_data = get_stock_info(stock['ticker'])
+        if real_data:
+            enriched_stock.update(real_data)
+        enriched.append(enriched_stock)
+        if (i + 1) % 25 == 0:
+            logger.info(f"Refreshed {i + 1}/{len(STOCKS)} stocks")
+    return jsonify({"stocks": enriched})
 
 
 if __name__ == '__main__':
