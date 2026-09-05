@@ -235,6 +235,43 @@
             background: #2563eb;
         }
 
+        .analyst-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
+            padding: 16px;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stock-card:hover .analyst-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .analyst-pie {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .analyst-label {
+            color: white;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-align: center;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -513,10 +550,6 @@
         <div id="content" style="display: none;">
             <div class="dashboard">
                 <div class="stat-card">
-                    <div class="stat-label">Top Stock</div>
-                    <div class="stat-value" id="topStock">-</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-label">Avg Score</div>
                     <div class="stat-value" id="avgScore">-</div>
                 </div>
@@ -709,13 +742,16 @@
                         </div>
                     </div>
                     <button class="view-details" onclick="openModal('${stock.ticker}')">Deep Dive →</button>
+                    <div class="analyst-overlay" onclick="openAnalystDetails('${stock.ticker}')">
+                        <div class="analyst-pie" id="pie-${stock.ticker}"></div>
+                        <div class="analyst-label">Analyst Ratings →</div>
+                    </div>
                 `;
                 grid.appendChild(card);
+                renderAnalystPie(stock);
             });
 
             if (stocks.length > 0) {
-                const topStockByScore = stocks.reduce((prev, current) => (prev.score > current.score) ? prev : current);
-                document.getElementById('topStock').textContent = topStockByScore.ticker;
                 const avgScore = (stocks.reduce((sum, s) => sum + s.score, 0) / stocks.length).toFixed(1);
                 document.getElementById('avgScore').textContent = avgScore;
                 document.getElementById('totalStocks').textContent = stocks.length;
@@ -747,6 +783,79 @@
 
         function closeModal() {
             document.getElementById('stockModal').style.display = 'none';
+        }
+
+        function renderAnalystPie(stock) {
+            const analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
+            const pieDiv = document.getElementById(`pie-${stock.ticker}`);
+            const total = analysts.buy + analysts.hold + analysts.sell;
+
+            const buyPercent = (analysts.buy / total) * 360;
+            const holdPercent = (analysts.hold / total) * 360;
+
+            const conic = `conic-gradient(
+                from 0deg,
+                #22c55e 0deg ${buyPercent}deg,
+                #94a3b8 ${buyPercent}deg ${buyPercent + holdPercent}deg,
+                #ef4444 ${buyPercent + holdPercent}deg 360deg
+            )`;
+
+            pieDiv.style.background = conic;
+            pieDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+        }
+
+        function openAnalystDetails(ticker) {
+            const stock = allStocks.find(s => s.ticker === ticker);
+            const analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
+            const total = analysts.buy + analysts.hold + analysts.sell;
+
+            const modalHTML = `
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <div>
+                            <div class="modal-title">${stock.ticker}</div>
+                            <div class="modal-subtitle">Analyst Ratings</div>
+                        </div>
+                        <span class="close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
+                    </div>
+                    <div style="padding: 24px; text-align: center;">
+                        <div style="font-size: 3em; margin-bottom: 24px; font-weight: bold; color: #1e293b;">
+                            ${stock.ticker}
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                            <div style="padding: 16px; background: #f0fdf4; border-radius: 8px; border: 2px solid #22c55e;">
+                                <div style="font-size: 2.5em; font-weight: 700; color: #22c55e;">${analysts.buy}</div>
+                                <div style="color: #166534; font-weight: 600; margin-top: 8px;">Buy</div>
+                                <div style="color: #84cc16; font-size: 0.9em;">Strong Signal</div>
+                            </div>
+                            <div style="padding: 16px; background: #f1f5f9; border-radius: 8px; border: 2px solid #94a3b8;">
+                                <div style="font-size: 2.5em; font-weight: 700; color: #94a3b8;">${analysts.hold}</div>
+                                <div style="color: #475569; font-weight: 600; margin-top: 8px;">Hold</div>
+                                <div style="color: #64748b; font-size: 0.9em;">Neutral</div>
+                            </div>
+                            <div style="padding: 16px; background: #fef2f2; border-radius: 8px; border: 2px solid #ef4444;">
+                                <div style="font-size: 2.5em; font-weight: 700; color: #ef4444;">${analysts.sell}</div>
+                                <div style="color: #7f1d1d; font-weight: 600; margin-top: 8px;">Sell</div>
+                                <div style="color: #dc2626; font-size: 0.9em;">Caution Signal</div>
+                            </div>
+                        </div>
+                        <div style="background: #f8fafc; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+                            <div style="color: #64748b; font-size: 0.9em; margin-bottom: 8px;">Based on consensus from major analysts</div>
+                            <div style="font-size: 2em; font-weight: 700; color: #3b82f6;">${total} Analysts</div>
+                        </div>
+                        <button onclick="openModal('${stock.ticker}'); this.parentElement.parentElement.style.display='none'" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1em;">View Full Details</button>
+                    </div>
+                </div>
+            `;
+
+            const analystModal = document.createElement('div');
+            analystModal.className = 'modal';
+            analystModal.style.display = 'block';
+            analystModal.innerHTML = modalHTML;
+            analystModal.onclick = function(e) {
+                if(e.target === this) this.style.display = 'none';
+            };
+            document.body.appendChild(analystModal);
         }
 
         function sortStocks(sortBy) {
