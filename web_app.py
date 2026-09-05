@@ -13,7 +13,7 @@ app = Flask(__name__, template_folder='templates')
 # Trading 212 API Configuration
 API_KEY = os.getenv('TRADING212_API_KEY')
 API_SECRET = os.getenv('TRADING212_API_SECRET')
-API_BASE_URL = 'https://api.live.trading212.com'
+API_BASE_URL = 'https://live.trading212.com/api/v0'
 
 def get_trading212_headers():
     """Generate Basic Auth header for Trading 212 API"""
@@ -44,7 +44,7 @@ def get_stock_info(ticker, max_retries=2):
 
             # Attempt to fetch instrument data from Trading 212
             # Using the instruments endpoint to get stock price and metrics
-            url = f"{API_BASE_URL}/api/v0/equity/instruments/{t212_ticker}"
+            url = f"{API_BASE_URL}/equity/instruments/{t212_ticker}"
             response = requests.get(url, headers=headers, timeout=10)
 
             # Check rate limit headers
