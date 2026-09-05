@@ -15,37 +15,23 @@ def get_stock_info(ticker):
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
-        
+
         price = info.get('currentPrice', 0) or info.get('regularMarketPrice', 0)
         target = info.get('targetMeanPrice', price * 1.1)
         pe = info.get('trailingPE', 0) or info.get('forwardPE', 0)
         market_cap = info.get('marketCap', 0)
         dividend = info.get('dividendRate', 0) or 0
-        
+
         # 52-week data
         fifty_two_week_low = info.get('fiftyTwoWeekLow', price * 0.8)
         fifty_two_week_high = info.get('fiftyTwoWeekHigh', price * 1.2)
-        
+
         upside = round((target - price) / price * 100, 1) if price else 0
         market_cap_b = round(market_cap / 1_000_000_000, 1) if market_cap else 0
         div_yield = round((dividend / price * 100), 2) if price else 0
-        
+
         return {
             'price': round(price, 2),
-
-
-# Merge real stock data with analyst ratings
-def enrich_stocks(stocks):
-    """Enrich mock stock data with real prices from Yahoo Finance"""
-    for stock in stocks:
-        real_data = get_stock_info(stock['ticker'])
-        if real_data:
-            stock.update(real_data)
-    return stocks
-
-# Keep the original mock analysts data
-STOCK_ANALYSTS = {}
-
             'target': round(target, 2),
             'upside': upside,
             'low_52w': round(fifty_two_week_low, 2),
