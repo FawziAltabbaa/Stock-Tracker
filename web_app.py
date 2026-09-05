@@ -1,8 +1,115 @@
 import os
+import requests
+import base64
 from flask import Flask, render_template, jsonify
+import logging
+import time
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__, template_folder='templates')
 
+# Trading 212 API Configuration
+API_KEY = os.getenv('TRADING212_API_KEY')
+API_SECRET = os.getenv('TRADING212_API_SECRET')
+API_BASE_URL = 'https://api.live.trading212.com'
+DEMO_API_BASE_URL = 'https://api.demo.trading212.com'
+
+def get_trading212_headers():
+    """Generate Basic Auth header for Trading 212 API"""
+    if not API_KEY or not API_SECRET:
+        logger.warning("Trading 212 credentials not configured")
+        return None
+    credentials = f"{API_KEY}:{API_SECRET}"
+    encoded = base64.b64encode(credentials.encode()).decode()
+    return {
+        'Authorization': f'Basic {encoded}',
+        'Content-Type': 'application/json'
+    }
+
+# Fetch real data from Trading 212 API with retries
+def get_stock_info(ticker, max_retries=2):
+    """Fetch real stock data from Trading 212 with retry logic"""
+    headers = get_trading212_headers()
+    if not headers:
+        logger.error(f"Cannot fetch {ticker}: Trading 212 credentials not configured")
+        return None
+
+    # Convert ticker format for Trading 212 (e.g., AAPL -> AAPL_US_EQ)
+    t212_ticker = f"{ticker}_US_EQ"
+
+    for attempt in range(max_retries):
+        try:
+            time.sleep(0.5)  # Rate limiting delay
+
+            # Attempt to fetch instrument data from Trading 212
+            # Using the instruments endpoint to get stock price and metrics
+            url = f"{API_BASE_URL}/api/v0/equity/instruments/{t212_ticker}"
+            response = requests.get(url, headers=headers, timeout=10)
+
+            # Check rate limit headers
+            if 'x-ratelimit-remaining' in response.headers:
+                remaining = response.headers.get('x-ratelimit-remaining')
+                logger.info(f"Rate limit remaining: {remaining}")
+
+            if response.status_code == 200:
+                data = response.json()
+
+                price = data.get('last', 0)
+                # For now, calculate estimates from available data
+                # In production, you'd fetch these from separate endpoints
+                target = price * 1.1 if price else 0
+                pe = data.get('peRatio', 0) or 0
+                market_cap = data.get('marketCap', 0)
+                dividend = data.get('dividendYield', 0) or 0
+
+                fifty_two_week_low = data.get('low52w', price * 0.8) if price else 0
+                fifty_two_week_high = data.get('high52w', price * 1.2) if price else 0
+
+                upside = round((target - price) / price * 100, 1) if price else 0
+                market_cap_b = round(market_cap / 1_000_000_000, 1) if market_cap else 0
+                div_yield = round((dividend * 100), 2) if dividend else 0
+
+                return {
+                    'price': round(price, 2),
+                    'target': round(target, 2),
+                    'upside': upside,
+                    'low_52w': round(fifty_two_week_low, 2),
+                    'high_52w': round(fifty_two_week_high, 2),
+                    'market_cap': market_cap_b,
+                    'dividend': div_yield,
+                    'pe_ratio': round(pe, 2) if pe else 0
+                }
+            elif response.status_code == 401:
+                logger.error(f"Authentication failed for {ticker}: Check Trading 212 credentials")
+                return None
+            elif response.status_code == 429:
+                logger.warning(f"Rate limit exceeded for {ticker}")
+                if attempt < max_retries - 1:
+                    time.sleep(2)
+                continue
+            else:
+                logger.error(f"API error for {ticker}: {response.status_code} - {response.text}")
+                if attempt < max_retries - 1:
+                    time.sleep(1)
+                continue
+
+        except requests.exceptions.ConnectionError as e:
+            logger.error(f"Connection error for {ticker}: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(1)
+            continue
+        except Exception as e:
+            logger.error(f"Attempt {attempt + 1} failed for {ticker}: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(1)
+            continue
+
+    logger.error(f"Failed to fetch {ticker} after {max_retries} attempts")
+    return None
+
+>>>>>>> Stashed changes
 STOCKS = [
     {"ticker": "AAPL", "name": "Apple Inc.", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Apple news", "url": "https://finance.yahoo.com/quote/AAPL/news"}]},
     {"ticker": "MSFT", "name": "Microsoft Corporation", "industry": "Technology", "momentum": 50.0, "valuation": 35.0, "sentiment": 50.0, "score": 45.0, "pe_ratio": 20.0, "headlines": [{"title": "Microsoft news", "url": "https://finance.yahoo.com/quote/MSFT/news"}]},
