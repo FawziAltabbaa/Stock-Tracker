@@ -13,7 +13,7 @@ app = Flask(__name__, template_folder='templates')
 # Trading 212 API Configuration
 API_KEY = os.getenv('TRADING212_API_KEY')
 API_SECRET = os.getenv('TRADING212_API_SECRET')
-API_BASE_URL = 'https://api.demo.trading212.com'
+API_BASE_URL = 'https://api.live.trading212.com'
 
 def get_trading212_headers():
     """Generate Basic Auth header for Trading 212 API"""
