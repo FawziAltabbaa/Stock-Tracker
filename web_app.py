@@ -1,7 +1,62 @@
 import os
 from flask import Flask, render_template, jsonify
+import yfinance as yf
+from functools import lru_cache
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__, template_folder='templates')
+
+@lru_cache(maxsize=200)
+def get_stock_info(ticker):
+    """Fetch real stock data from Yahoo Finance with caching"""
+    try:
+        stock = yf.Ticker(ticker)
+        info = stock.info
+        
+        price = info.get('currentPrice', 0) or info.get('regularMarketPrice', 0)
+        target = info.get('targetMeanPrice', price * 1.1)
+        pe = info.get('trailingPE', 0) or info.get('forwardPE', 0)
+        market_cap = info.get('marketCap', 0)
+        dividend = info.get('dividendRate', 0) or 0
+        
+        # 52-week data
+        fifty_two_week_low = info.get('fiftyTwoWeekLow', price * 0.8)
+        fifty_two_week_high = info.get('fiftyTwoWeekHigh', price * 1.2)
+        
+        upside = round((target - price) / price * 100, 1) if price else 0
+        market_cap_b = round(market_cap / 1_000_000_000, 1) if market_cap else 0
+        div_yield = round((dividend / price * 100), 2) if price else 0
+        
+        return {
+            'price': round(price, 2),
+
+
+# Merge real stock data with analyst ratings
+def enrich_stocks(stocks):
+    """Enrich mock stock data with real prices from Yahoo Finance"""
+    for stock in stocks:
+        real_data = get_stock_info(stock['ticker'])
+        if real_data:
+            stock.update(real_data)
+    return stocks
+
+# Keep the original mock analysts data
+STOCK_ANALYSTS = {}
+
+            'target': round(target, 2),
+            'upside': upside,
+            'low_52w': round(fifty_two_week_low, 2),
+            'high_52w': round(fifty_two_week_high, 2),
+            'market_cap': market_cap_b,
+            'dividend': div_yield,
+            'pe_ratio': round(pe, 2) if pe else 0
+        }
+    except Exception as e:
+        logger.error(f"Error fetching data for {ticker}: {e}")
+        return None
 
 STOCKS = [
     {"ticker": "AAPL", "name": "Apple Inc.", "industry": "Technology", "price": 337.74, "target": 399.01, "upside": 18.1, "low_52w": 236.42, "high_52w": 439.06, "market_cap": 75.5, "dividend": 0.89, "pe_ratio": 24.05, "headlines": [{"title": "View on Yahoo Finance", "url": "https://finance.yahoo.com/quote/AAPL/news"}], "analysts": {"buy": 30, "hold": 13, "sell": 57}},
@@ -209,7 +264,16 @@ def health():
 
 @app.route('/api/stocks')
 def stocks():
-    return jsonify(STOCKS)
+    # Enrich stocks with real data and add analyst ratings
+    enriched = []
+    for stock in STOCKS:
+        enriched_stock = stock.copy()
+        # Merge with real data
+        real_data = get_stock_info(stock['ticker'])
+        if real_data:
+            enriched_stock.update(real_data)
+        enriched.append(enriched_stock)
+    return jsonify(enriched)
 
 
 @app.route('/api/industries')
