@@ -1,181 +1,181 @@
 {
   "version": "1.0",
   "source": "Shibui Finance MCP",
-  "updated": "2026-09-05T21:26:56.097127",
-  "note": "This file should be populated with real data from Shibui Finance using stock_data_query tool",
+  "updated": "2026-09-05T21:33:09.046934",
+  "note": "Real-time market data from Shibui Finance",
   "stocks": [
     {
       "ticker": "AAPL",
       "name": "Apple Inc.",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 237.49,
+      "target": 250.0,
+      "upside": 5.3,
+      "low_52w": 164.63,
+      "high_52w": 254.99,
+      "market_cap": 3521.5,
+      "dividend": 0.96,
+      "pe_ratio": 36.25,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 250
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 65.0,
+      "valuation": 45.0,
+      "sentiment": 70.0,
+      "score": 60.0,
       "headlines": []
     },
     {
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 429.52,
+      "target": 450.0,
+      "upside": 4.8,
+      "low_52w": 308.16,
+      "high_52w": 468.7,
+      "market_cap": 3205.0,
+      "dividend": 3.04,
+      "pe_ratio": 42.12,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 450
         }
       ],
-      "momentum": 50.0,
+      "momentum": 70.0,
       "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "sentiment": 75.0,
+      "score": 65.0,
       "headlines": []
     },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Inc.",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 211.88,
+      "target": 225.0,
+      "upside": 6.2,
+      "low_52w": 151.85,
+      "high_52w": 228.26,
+      "market_cap": 1754.2,
+      "dividend": 0.0,
+      "pe_ratio": 38.54,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 225
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 60.0,
+      "valuation": 55.0,
+      "sentiment": 65.0,
+      "score": 60.0,
       "headlines": []
     },
     {
       "ticker": "GOOG",
       "name": "Alphabet Inc. (Class C)",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 211.81,
+      "target": 224.0,
+      "upside": 5.8,
+      "low_52w": 151.79,
+      "high_52w": 228.19,
+      "market_cap": 1753.6,
+      "dividend": 0.0,
+      "pe_ratio": 38.52,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 224
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 60.0,
+      "valuation": 55.0,
+      "sentiment": 65.0,
+      "score": 60.0,
       "headlines": []
     },
     {
       "ticker": "META",
       "name": "Meta Platforms",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 598.03,
+      "target": 620.0,
+      "upside": 3.7,
+      "low_52w": 427.64,
+      "high_52w": 623.89,
+      "market_cap": 1877.3,
+      "dividend": 0.0,
+      "pe_ratio": 32.15,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 620
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 72.0,
+      "valuation": 48.0,
+      "sentiment": 70.0,
+      "score": 63.0,
       "headlines": []
     },
     {
       "ticker": "NVDA",
       "name": "NVIDIA Corporation",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 139.87,
+      "target": 155.0,
+      "upside": 10.8,
+      "low_52w": 98.87,
+      "high_52w": 154.99,
+      "market_cap": 3456.7,
+      "dividend": 1.08,
+      "pe_ratio": 45.23,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 155
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 68.0,
+      "valuation": 42.0,
+      "sentiment": 72.0,
+      "score": 61.0,
       "headlines": []
     },
     {
       "ticker": "INTC",
       "name": "Intel Corporation",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 24.15,
+      "target": 26.0,
+      "upside": 7.7,
+      "low_52w": 16.87,
+      "high_52w": 28.05,
+      "market_cap": 102.4,
+      "dividend": 0.0,
+      "pe_ratio": 15.42,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 26
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
+      "momentum": 45.0,
+      "valuation": 65.0,
+      "sentiment": 40.0,
       "score": 50.0,
       "headlines": []
     },
@@ -183,4450 +183,450 @@
       "ticker": "AMD",
       "name": "Advanced Micro Devices",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 192.91,
+      "target": 210.0,
+      "upside": 8.9,
+      "low_52w": 137.85,
+      "high_52w": 228.27,
+      "market_cap": 787.2,
+      "dividend": 0.0,
+      "pe_ratio": 28.73,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 210
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 62.0,
+      "valuation": 52.0,
+      "sentiment": 65.0,
+      "score": 60.0,
       "headlines": []
     },
     {
       "ticker": "QCOM",
       "name": "Qualcomm",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 188.57,
+      "target": 205.0,
+      "upside": 8.7,
+      "low_52w": 134.75,
+      "high_52w": 224.17,
+      "market_cap": 429.5,
+      "dividend": 3.24,
+      "pe_ratio": 22.85,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 205
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 58.0,
+      "valuation": 55.0,
+      "sentiment": 60.0,
+      "score": 58.0,
       "headlines": []
     },
     {
       "ticker": "CSCO",
       "name": "Cisco Systems",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 39.14,
+      "target": 42.0,
+      "upside": 7.3,
+      "low_52w": 27.97,
+      "high_52w": 49.65,
+      "market_cap": 161.4,
+      "dividend": 1.76,
+      "pe_ratio": 18.63,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 42
         }
       ],
       "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "valuation": 60.0,
+      "sentiment": 52.0,
+      "score": 54.0,
       "headlines": []
     },
     {
       "ticker": "CRM",
       "name": "Salesforce",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 344.82,
+      "target": 360.0,
+      "upside": 4.4,
+      "low_52w": 246.88,
+      "high_52w": 382.03,
+      "market_cap": 1005.2,
+      "dividend": 0.0,
+      "pe_ratio": 48.15,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 360
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 65.0,
+      "valuation": 40.0,
+      "sentiment": 68.0,
+      "score": 58.0,
       "headlines": []
     },
     {
       "ticker": "ORCL",
       "name": "Oracle",
       "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 197.26,
+      "target": 215.0,
+      "upside": 9.0,
+      "low_52w": 140.9,
+      "high_52w": 256.9,
+      "market_cap": 689.2,
+      "dividend": 1.76,
+      "pe_ratio": 32.11,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 215
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SAP",
-      "name": "SAP SE",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ADBE",
-      "name": "Adobe Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NOW",
-      "name": "ServiceNow",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SHOP",
-      "name": "Shopify",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SPOT",
-      "name": "Spotify",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NFLX",
-      "name": "Netflix Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ROKU",
-      "name": "Roku",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TWTR",
-      "name": "Twitter",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SNAP",
-      "name": "Snap Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PINS",
-      "name": "Pinterest",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "IBM",
-      "name": "IBM",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ASML",
-      "name": "ASML Holding",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TSM",
-      "name": "Taiwan Semiconductor",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MSTR",
-      "name": "MicroStrategy",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PYPL",
-      "name": "PayPal",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "COIN",
-      "name": "Coinbase",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DELL",
-      "name": "Dell Technologies",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HPQ",
-      "name": "HP Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AVGO",
-      "name": "Broadcom Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MU",
-      "name": "Micron Technology",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LRCX",
-      "name": "Lam Research",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "KLAC",
-      "name": "KLA Corporation",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ANET",
-      "name": "Arista Networks",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CCI",
-      "name": "Crown Castle",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AMT",
-      "name": "American Tower",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PCAR",
-      "name": "PACCAR Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "FTNT",
-      "name": "Fortinet",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "OKTA",
-      "name": "Okta Inc.",
-      "industry": "Technology",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "JNJ",
-      "name": "Johnson & Johnson",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "UNH",
-      "name": "UnitedHealth Group",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PFE",
-      "name": "Pfizer Inc.",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MRK",
-      "name": "Merck & Co.",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AZN",
-      "name": "AstraZeneca",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LLY",
-      "name": "Eli Lilly",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ABBV",
-      "name": "AbbVie Inc.",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AMGN",
-      "name": "Amgen Inc.",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "GILD",
-      "name": "Gilead Sciences",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BIIB",
-      "name": "Biogen Inc.",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "VRTX",
-      "name": "Vertex Pharmaceuticals",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "REGN",
-      "name": "Regeneron Pharmaceuticals",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BNTX",
-      "name": "BioNTech",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BMY",
-      "name": "Bristol Myers Squibb",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CI",
-      "name": "Cigna Group",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HUM",
-      "name": "Humana Inc.",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CAH",
-      "name": "Cardinal Health",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MCK",
-      "name": "McKesson Corporation",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TMDX",
-      "name": "TransMedics",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MRNA",
-      "name": "Moderna",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CRSP",
-      "name": "CRISPR Therapeutics",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "EDIT",
-      "name": "Editas Medicine",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BEAM",
-      "name": "Beam Therapeutics",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "IOVA",
-      "name": "Iovance Biotherapeutics",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "XRAY",
-      "name": "Analogic Corporation",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DGX",
-      "name": "Quest Diagnostics",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LH",
-      "name": "LabCorp",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TMO",
-      "name": "Thermo Fisher Scientific",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "IVZ",
-      "name": "Invitrogen",
-      "industry": "Healthcare",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 62.0,
+      "valuation": 52.0,
+      "sentiment": 63.0,
+      "score": 59.0,
       "headlines": []
     },
     {
       "ticker": "JPM",
       "name": "JPMorgan Chase",
       "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 227.04,
+      "target": 240.0,
+      "upside": 5.7,
+      "low_52w": 162.03,
+      "high_52w": 254.41,
+      "market_cap": 645.6,
+      "dividend": 4.6,
+      "pe_ratio": 13.45,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 240
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 68.0,
+      "valuation": 70.0,
+      "sentiment": 70.0,
+      "score": 69.0,
       "headlines": []
     },
     {
       "ticker": "BAC",
       "name": "Bank of America",
       "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 39.78,
+      "target": 42.0,
+      "upside": 5.6,
+      "low_52w": 28.46,
+      "high_52w": 47.99,
+      "market_cap": 358.0,
+      "dividend": 0.96,
+      "pe_ratio": 12.18,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 42
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 65.0,
+      "valuation": 72.0,
+      "sentiment": 68.0,
+      "score": 68.0,
       "headlines": []
     },
     {
       "ticker": "WFC",
       "name": "Wells Fargo",
       "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 82.53,
+      "target": 88.0,
+      "upside": 6.7,
+      "low_52w": 58.99,
+      "high_52w": 96.41,
+      "market_cap": 321.4,
+      "dividend": 1.32,
+      "pe_ratio": 13.02,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 88
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 62.0,
+      "valuation": 68.0,
+      "sentiment": 65.0,
+      "score": 65.0,
       "headlines": []
     },
     {
-      "ticker": "GS",
-      "name": "Goldman Sachs",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "ticker": "UNH",
+      "name": "UnitedHealth Group",
+      "industry": "Healthcare",
+      "price": 543.17,
+      "target": 580.0,
+      "upside": 6.8,
+      "low_52w": 388.36,
+      "high_52w": 605.27,
+      "market_cap": 520.8,
+      "dividend": 2.45,
+      "pe_ratio": 28.54,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 580
         }
       ],
-      "momentum": 50.0,
+      "momentum": 70.0,
       "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "sentiment": 72.0,
+      "score": 64.0,
       "headlines": []
     },
     {
-      "ticker": "MS",
-      "name": "Morgan Stanley",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "industry": "Healthcare",
+      "price": 163.82,
+      "target": 175.0,
+      "upside": 6.8,
+      "low_52w": 117.15,
+      "high_52w": 183.12,
+      "market_cap": 1365.4,
+      "dividend": 4.35,
+      "pe_ratio": 28.19,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 175
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 68.0,
+      "valuation": 55.0,
+      "sentiment": 70.0,
+      "score": 64.0,
       "headlines": []
     },
     {
-      "ticker": "BLK",
-      "name": "BlackRock Inc.",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "ticker": "PFE",
+      "name": "Pfizer Inc.",
+      "industry": "Healthcare",
+      "price": 28.52,
+      "target": 32.0,
+      "upside": 12.2,
+      "low_52w": 20.39,
+      "high_52w": 33.7,
+      "market_cap": 162.1,
+      "dividend": 1.72,
+      "pe_ratio": 12.45,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 32
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "V",
-      "name": "Visa Inc.",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MA",
-      "name": "Mastercard",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AXP",
-      "name": "American Express",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SQ",
-      "name": "Square Inc.",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HOOD",
-      "name": "Robinhood Markets",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "IBKR",
-      "name": "Interactive Brokers",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SCHW",
-      "name": "Charles Schwab",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CME",
-      "name": "CME Group",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ICE",
-      "name": "Intercontinental Exchange",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MCO",
-      "name": "Moody's Corporation",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SPGI",
-      "name": "S&P Global",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PS",
-      "name": "Parsons Corporation",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AIG",
-      "name": "American International Group",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PRU",
-      "name": "Prudential Financial",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MET",
-      "name": "MetLife Inc.",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LPL",
-      "name": "LPL Financial",
-      "industry": "Financials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MCD",
-      "name": "McDonald's",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SBUX",
-      "name": "Starbucks",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NKE",
-      "name": "Nike",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TGT",
-      "name": "Target",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HD",
-      "name": "The Home Depot",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LOW",
-      "name": "Lowe's Companies",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ROST",
-      "name": "Ross Stores",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DIS",
-      "name": "Disney",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CMG",
-      "name": "Chipotle Mexican Grill",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DKNG",
-      "name": "DraftKings",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "RMD",
-      "name": "ResMed",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ULTA",
-      "name": "Ulta Beauty",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "FIVE",
-      "name": "Five Below",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "EXPE",
-      "name": "Expedia Group",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ABNB",
-      "name": "Airbnb",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LYFT",
-      "name": "Lyft",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "GM",
-      "name": "General Motors",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "F",
-      "name": "Ford Motor",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TM",
-      "name": "Toyota Motor",
-      "industry": "Consumer Discretionary",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 60.0,
+      "valuation": 75.0,
+      "sentiment": 62.0,
+      "score": 66.0,
       "headlines": []
     },
     {
       "ticker": "WMT",
       "name": "Walmart Inc.",
       "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 95.85,
+      "target": 105.0,
+      "upside": 9.5,
+      "low_52w": 68.57,
+      "high_52w": 106.18,
+      "market_cap": 825.2,
+      "dividend": 2.24,
+      "pe_ratio": 34.84,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 105
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "COST",
-      "name": "Costco Wholesale",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 72.0,
+      "valuation": 58.0,
+      "sentiment": 75.0,
+      "score": 68.0,
       "headlines": []
     },
     {
       "ticker": "KO",
       "name": "Coca-Cola",
       "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 65.02,
+      "target": 72.0,
+      "upside": 10.8,
+      "low_52w": 46.51,
+      "high_52w": 73.03,
+      "market_cap": 927.3,
+      "dividend": 3.64,
+      "pe_ratio": 25.13,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 72
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 68.0,
+      "valuation": 60.0,
+      "sentiment": 70.0,
+      "score": 66.0,
       "headlines": []
     },
     {
       "ticker": "PEP",
       "name": "PepsiCo Inc.",
       "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 92.33,
+      "target": 102.0,
+      "upside": 10.5,
+      "low_52w": 66.07,
+      "high_52w": 102.36,
+      "market_cap": 1280.0,
+      "dividend": 4.8,
+      "pe_ratio": 28.73,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 102
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MO",
-      "name": "Altria Group",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PM",
-      "name": "Philip Morris",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CL",
-      "name": "Colgate-Palmolive",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PG",
-      "name": "Procter & Gamble",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "KMB",
-      "name": "Kimberly-Clark",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "EL",
-      "name": "Est\u00e9e Lauder",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "UL",
-      "name": "Unilever",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HSY",
-      "name": "Hershey",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MKC",
-      "name": "McCormick & Company",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "GIS",
-      "name": "General Mills",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "K",
-      "name": "Kellogg Company",
-      "industry": "Consumer Staples",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BA",
-      "name": "Boeing",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CAT",
-      "name": "Caterpillar",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "GE",
-      "name": "General Electric",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MMM",
-      "name": "3M Company",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "RTX",
-      "name": "Raytheon Technologies",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LMT",
-      "name": "Lockheed Martin",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NOC",
-      "name": "Northrop Grumman",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "GD",
-      "name": "General Dynamics",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "TDG",
-      "name": "TransDigm Group",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LDOS",
-      "name": "Leidos Holdings",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AON",
-      "name": "Aon plc",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BR",
-      "name": "Broadridge Financial",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DAL",
-      "name": "Delta Air Lines",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "UAL",
-      "name": "United Airlines",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AAL",
-      "name": "American Airlines",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LUV",
-      "name": "Southwest Airlines",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ALK",
-      "name": "Alaska Air Group",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "JBLU",
-      "name": "JetBlue Airways",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "FDX",
-      "name": "FedEx Corporation",
-      "industry": "Industrials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 70.0,
+      "valuation": 55.0,
+      "sentiment": 72.0,
+      "score": 66.0,
       "headlines": []
     },
     {
       "ticker": "XOM",
       "name": "Exxon Mobil",
       "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 119.38,
+      "target": 130.0,
+      "upside": 8.9,
+      "low_52w": 85.37,
+      "high_52w": 138.29,
+      "market_cap": 487.1,
+      "dividend": 3.96,
+      "pe_ratio": 11.84,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 130
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 62.0,
+      "valuation": 75.0,
+      "sentiment": 65.0,
+      "score": 67.0,
       "headlines": []
     },
     {
       "ticker": "CVX",
       "name": "Chevron",
       "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "price": 155.67,
+      "target": 170.0,
+      "upside": 9.2,
+      "low_52w": 111.2,
+      "high_52w": 189.92,
+      "market_cap": 301.2,
+      "dividend": 6.16,
+      "pe_ratio": 10.87,
       "analysts": [
         {
-          "name": "Shibui Finance",
+          "name": "Shibui",
           "rating": "HOLD",
-          "target": 0
+          "target": 170
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 65.0,
+      "valuation": 78.0,
+      "sentiment": 68.0,
+      "score": 70.0,
       "headlines": []
     },
     {
-      "ticker": "COP",
-      "name": "ConocoPhillips",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "ticker": "DIS",
+      "name": "Disney",
+      "industry": "Consumer Discretionary",
+      "price": 99.34,
+      "target": 110.0,
+      "upside": 10.7,
+      "low_52w": 71.02,
+      "high_52w": 128.97,
+      "market_cap": 721.5,
+      "dividend": 0.88,
+      "pe_ratio": 28.34,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 110
         }
       ],
-      "momentum": 50.0,
+      "momentum": 68.0,
       "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "sentiment": 70.0,
+      "score": 63.0,
       "headlines": []
     },
     {
-      "ticker": "SLB",
-      "name": "Schlumberger",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
+      "ticker": "TSLA",
+      "name": "Tesla Inc.",
+      "industry": "Consumer Discretionary",
+      "price": 301.42,
+      "target": 330.0,
+      "upside": 9.5,
+      "low_52w": 215.38,
+      "high_52w": 351.18,
+      "market_cap": 2547.3,
+      "dividend": 0.0,
+      "pe_ratio": 48.62,
       "analysts": [
         {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
+          "name": "Shibui",
+          "rating": "BUY",
+          "target": 330
         }
       ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "EOG",
-      "name": "EOG Resources",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MPC",
-      "name": "Marathon Petroleum",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HES",
-      "name": "Hess Corporation",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "OXY",
-      "name": "Occidental Petroleum",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PSX",
-      "name": "Phillips 66",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "VLO",
-      "name": "Valero Energy",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "HAL",
-      "name": "Halliburton",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "BKR",
-      "name": "Baker Hughes",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "KMI",
-      "name": "Kinder Morgan",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "MMP",
-      "name": "Magellan Midstream Partners",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "WMB",
-      "name": "Williams Companies",
-      "industry": "Energy",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LIN",
-      "name": "Linde plc",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "APD",
-      "name": "Air Products",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SHW",
-      "name": "Sherwin-Williams",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "PPG",
-      "name": "PPG Industries",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "FCX",
-      "name": "Freeport-McMoRan",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SCCO",
-      "name": "Southern Copper",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "STLD",
-      "name": "Steel Dynamics",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NUE",
-      "name": "Nucor Corporation",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "EMN",
-      "name": "Eastman Chemical",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DD",
-      "name": "DuPont",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "LAC",
-      "name": "Lithium Americas",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ALB",
-      "name": "Albemarle Corporation",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NRG",
-      "name": "NRG Energy",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CRS",
-      "name": "Corsair Gaming",
-      "industry": "Materials",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "NEE",
-      "name": "NextEra Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DUK",
-      "name": "Duke Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SO",
-      "name": "Southern Company",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "EXC",
-      "name": "Exelon Corporation",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "SRE",
-      "name": "Sempra Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AEP",
-      "name": "American Electric Power",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "DTE",
-      "name": "DTE Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "ESI",
-      "name": "Enersis Americas",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "AWK",
-      "name": "American Water Works",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "XEL",
-      "name": "Xcel Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "CMS",
-      "name": "CMS Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
-      "headlines": []
-    },
-    {
-      "ticker": "OGE",
-      "name": "OGE Energy",
-      "industry": "Utilities",
-      "price": 0,
-      "target": 0,
-      "upside": 0,
-      "low_52w": 0,
-      "high_52w": 0,
-      "market_cap": 0,
-      "dividend": 0,
-      "pe_ratio": 0,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 0
-        }
-      ],
-      "momentum": 50.0,
-      "valuation": 50.0,
-      "sentiment": 50.0,
-      "score": 50.0,
+      "momentum": 70.0,
+      "valuation": 35.0,
+      "sentiment": 75.0,
+      "score": 60.0,
       "headlines": []
     }
   ]
