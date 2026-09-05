@@ -166,10 +166,38 @@
             margin-top: 4px;
         }
 
-        .stock-score {
-            font-size: 2.2em;
+        .stock-price {
+            font-size: 1.8em;
             font-weight: 800;
+            color: #3b82f6;
             text-align: right;
+        }
+
+        .price-target {
+            background: linear-gradient(135deg, #f0fdf4, #f1fdf9);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .target-label {
+            font-size: 0.75em;
+            color: #16a34a;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .target-value {
+            font-size: 1.4em;
+            font-weight: 800;
+        }
+
+        .upside {
+            font-size: 0.9em;
+            font-weight: 600;
         }
 
         .score-excellent { color: #059669; }
@@ -675,19 +703,19 @@
 
             <div class="modal-grid">
                 <div class="detail-box">
-                    <div class="detail-label">Overall Score</div>
+                    <div class="detail-label">Current Price</div>
                     <div class="detail-value" id="modalScore">-</div>
                 </div>
                 <div class="detail-box">
-                    <div class="detail-label">Momentum</div>
+                    <div class="detail-label">12-Month Target</div>
                     <div class="detail-value" id="modalMomentum">-</div>
                 </div>
                 <div class="detail-box">
-                    <div class="detail-label">Valuation</div>
+                    <div class="detail-label">Upside Potential</div>
                     <div class="detail-value" id="modalValuation">-</div>
                 </div>
                 <div class="detail-box">
-                    <div class="detail-label">Sentiment</div>
+                    <div class="detail-label">52-Week Range</div>
                     <div class="detail-value" id="modalSentiment">-</div>
                 </div>
                 <div class="detail-box">
@@ -726,7 +754,7 @@
             grid.innerHTML = '';
 
             stocks.forEach(stock => {
-                const scoreClass = getScoreClass(stock.score);
+                const upsideColor = stock.upside >= 0 ? '#22c55e' : '#ef4444';
                 const card = document.createElement('div');
                 card.className = 'stock-card';
                 card.innerHTML = `
@@ -735,34 +763,40 @@
                             <div class="stock-ticker">${stock.ticker}</div>
                             <div class="stock-name">${stock.name}</div>
                         </div>
-                        <div class="stock-score ${scoreClass}">${formatScore(stock.score)}</div>
+                        <div class="stock-price">$${stock.price.toFixed(2)}</div>
+                    </div>
+                    <div class="price-target">
+                        <div class="target-label">12-Month Target</div>
+                        <div class="target-value" style="color: ${upsideColor};">
+                            $${stock.target.toFixed(2)} <span class="upside">${stock.upside > 0 ? '+' : ''}${stock.upside}%</span>
+                        </div>
                     </div>
                     <div class="stock-metrics">
                         <div class="metric-box">
-                            <div class="metric-label">Momentum</div>
-                            <div class="metric-value">${formatScore(stock.momentum)}</div>
+                            <div class="metric-label">Market Cap</div>
+                            <div class="metric-value">${stock.market_cap}B</div>
                         </div>
                         <div class="metric-box">
-                            <div class="metric-label">Valuation</div>
-                            <div class="metric-value">${formatScore(stock.valuation)}</div>
+                            <div class="metric-label">P/E Ratio</div>
+                            <div class="metric-value">${stock.pe_ratio.toFixed(2)}</div>
                         </div>
                         <div class="metric-box">
-                            <div class="metric-label">Sentiment</div>
-                            <div class="metric-value">${formatScore(stock.sentiment)}</div>
+                            <div class="metric-label">Dividend</div>
+                            <div class="metric-value">${stock.dividend}%</div>
                         </div>
-                        <div class="metric-box pe-ratio">
-                            <div class="metric-label">P/E</div>
-                            <div class="metric-value">${stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A'}</div>
+                        <div class="metric-box">
+                            <div class="metric-label">52w Range</div>
+                            <div class="metric-value">$${stock.low_52w}-${stock.high_52w}</div>
                         </div>
                     </div>
                     <button class="view-details" onclick="openModal('${stock.ticker}')">Deep Dive →</button>
-                    <div class="analyst-overlay" onclick="openAnalystDetails('${stock.ticker}')">
-                        <div class="analyst-pie" id="pie-${stock.ticker}"></div>
+                    <div class="analyst-overlay" onclick="event.stopPropagation(); openAnalystDetails('${stock.ticker}')">
+                        <svg class="analyst-pie" id="pie-${stock.ticker}" viewBox="0 0 100 100" style="width: 80px; height: 80px;"></svg>
                         <div class="analyst-label">Analyst Ratings →</div>
                     </div>
                 `;
                 grid.appendChild(card);
-                renderAnalystPie(stock);
+                setTimeout(() => renderAnalystPie(stock), 0);
             });
 
             if (stocks.length > 0) {
@@ -774,12 +808,14 @@
 
         function openModal(ticker) {
             const stock = allStocks.find(s => s.ticker === ticker);
+            const upsideColor = stock.upside >= 0 ? '#22c55e' : '#ef4444';
+
             document.getElementById('modalTicker').textContent = stock.ticker;
             document.getElementById('modalName').textContent = stock.name;
-            document.getElementById('modalScore').textContent = formatScore(stock.score);
-            document.getElementById('modalMomentum').textContent = formatScore(stock.momentum);
-            document.getElementById('modalValuation').textContent = formatScore(stock.valuation);
-            document.getElementById('modalSentiment').textContent = formatScore(stock.sentiment);
+            document.getElementById('modalScore').textContent = `$${stock.price.toFixed(2)}`;
+            document.getElementById('modalMomentum').textContent = `$${stock.target.toFixed(2)}`;
+            document.getElementById('modalValuation').textContent = `${stock.upside > 0 ? '+' : ''}${stock.upside}%`;
+            document.getElementById('modalSentiment').textContent = `$${stock.low_52w.toFixed(2)} - $${stock.high_52w.toFixed(2)}`;
             document.getElementById('modalPE').textContent = stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A';
 
             const headlinesDiv = document.getElementById('modalHeadlines');
@@ -799,21 +835,40 @@
 
         function renderAnalystPie(stock) {
             const analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
-            const pieDiv = document.getElementById(`pie-${stock.ticker}`);
+            const svgEl = document.getElementById(`pie-${stock.ticker}`);
+            if (!svgEl) return;
+
             const total = analysts.buy + analysts.hold + analysts.sell;
+            const buyPct = (analysts.buy / total) * 100;
+            const holdPct = (analysts.hold / total) * 100;
 
-            const buyPercent = (analysts.buy / total) * 360;
-            const holdPercent = (analysts.hold / total) * 360;
+            // Create pie slices
+            let sliceStart = 0;
+            const slices = [
+                {pct: buyPct, color: '#22c55e', label: 'Buy'},
+                {pct: holdPct, color: '#94a3b8', label: 'Hold'},
+                {pct: (analysts.sell / total) * 100, color: '#ef4444', label: 'Sell'}
+            ];
 
-            const conic = `conic-gradient(
-                from 0deg,
-                #22c55e 0deg ${buyPercent}deg,
-                #94a3b8 ${buyPercent}deg ${buyPercent + holdPercent}deg,
-                #ef4444 ${buyPercent + holdPercent}deg 360deg
-            )`;
+            let svg = '';
+            slices.forEach(slice => {
+                const angle = (slice.pct / 100) * 360;
+                const startAngle = sliceStart * Math.PI / 180;
+                const endAngle = (sliceStart + angle) * Math.PI / 180;
 
-            pieDiv.style.background = conic;
-            pieDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+                const x1 = 50 + 40 * Math.cos(startAngle);
+                const y1 = 50 + 40 * Math.sin(startAngle);
+                const x2 = 50 + 40 * Math.cos(endAngle);
+                const y2 = 50 + 40 * Math.sin(endAngle);
+
+                const largeArc = angle > 180 ? 1 : 0;
+                const pathData = `M 50 50 L ${x1} ${y1} A 40 40 0 ${largeArc} 1 ${x2} ${y2} Z`;
+
+                svg += `<path d="${pathData}" fill="${slice.color}" opacity="0.9"/>`;
+                sliceStart += angle;
+            });
+
+            svgEl.innerHTML = svg;
         }
 
         function openAnalystDetails(ticker) {
