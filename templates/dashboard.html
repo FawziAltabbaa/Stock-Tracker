@@ -841,32 +841,54 @@
             const total = analysts.buy + analysts.hold + analysts.sell;
             const buyPct = (analysts.buy / total) * 100;
             const holdPct = (analysts.hold / total) * 100;
+            const sellPct = (analysts.sell / total) * 100;
 
-            // Create pie slices
-            let sliceStart = 0;
             const slices = [
-                {pct: buyPct, color: '#22c55e', label: 'Buy'},
-                {pct: holdPct, color: '#94a3b8', label: 'Hold'},
-                {pct: (analysts.sell / total) * 100, color: '#ef4444', label: 'Sell'}
+                {pct: buyPct, id: 'buy', gradient: 'url(#buyGradient)'},
+                {pct: holdPct, id: 'hold', gradient: 'url(#holdGradient)'},
+                {pct: sellPct, id: 'sell', gradient: 'url(#sellGradient)'}
             ];
 
-            let svg = '';
-            slices.forEach(slice => {
+            let svg = `
+                <defs>
+                    <linearGradient id="buyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="holdGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#cbd5e1;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#94a3b8;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="sellGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="shadow">
+                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+                    </filter>
+                </defs>
+            `;
+
+            let sliceStart = 0;
+            slices.forEach((slice, idx) => {
                 const angle = (slice.pct / 100) * 360;
                 const startAngle = sliceStart * Math.PI / 180;
                 const endAngle = (sliceStart + angle) * Math.PI / 180;
 
-                const x1 = 50 + 40 * Math.cos(startAngle);
-                const y1 = 50 + 40 * Math.sin(startAngle);
-                const x2 = 50 + 40 * Math.cos(endAngle);
-                const y2 = 50 + 40 * Math.sin(endAngle);
+                const x1 = 50 + 38 * Math.cos(startAngle);
+                const y1 = 50 + 38 * Math.sin(startAngle);
+                const x2 = 50 + 38 * Math.cos(endAngle);
+                const y2 = 50 + 38 * Math.sin(endAngle);
 
                 const largeArc = angle > 180 ? 1 : 0;
-                const pathData = `M 50 50 L ${x1} ${y1} A 40 40 0 ${largeArc} 1 ${x2} ${y2} Z`;
+                const pathData = `M 50 50 L ${x1} ${y1} A 38 38 0 ${largeArc} 1 ${x2} ${y2} Z`;
 
-                svg += `<path d="${pathData}" fill="${slice.color}" opacity="0.9"/>`;
+                svg += `<path d="${pathData}" fill="${slice.gradient}" filter="url(#shadow)" opacity="0.95" style="stroke: rgba(255,255,255,0.3); stroke-width: 0.5;"/>`;
                 sliceStart += angle;
             });
+
+            // Center circle for donut effect
+            svg += `<circle cx="50" cy="50" r="20" fill="#ffffff" filter="url(#shadow)"/>`;
 
             svgEl.innerHTML = svg;
         }
