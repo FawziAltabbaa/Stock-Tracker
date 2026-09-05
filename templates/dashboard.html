@@ -24,12 +24,13 @@
         }
 
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
             padding: 32px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 32px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         h1 {
@@ -118,15 +119,16 @@
         }
 
         .stock-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.95));
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
+            border-radius: 16px;
             padding: 24px;
-            border: 2px solid transparent;
+            border: 1px solid rgba(59, 130, 246, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255,255,255,0.8);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .stock-card::before {
@@ -140,9 +142,9 @@
         }
 
         .stock-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
-            border-color: #3b82f6;
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(59, 130, 246, 0.25), 0 0 20px rgba(6, 182, 212, 0.15);
+            border-color: rgba(59, 130, 246, 0.6);
         }
 
         .stock-header {
@@ -275,13 +277,15 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(15, 23, 42, 0.9));
+            backdrop-filter: blur(8px);
             animation: fadeIn 0.3s ease;
+            overflow-y: auto;
         }
 
         @keyframes fadeIn {
@@ -290,14 +294,17 @@
         }
 
         .modal-content {
-            background: white;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
             margin: 5% auto;
             padding: 32px;
-            border-radius: 12px;
+            border-radius: 16px;
             width: 90%;
             max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.2), 0 0 1px rgba(59, 130, 246, 0.5);
             animation: slideIn 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            position: relative;
+            z-index: 2001;
         }
 
         @keyframes slideIn {
@@ -387,6 +394,20 @@
             color: #94a3b8;
             margin-top: 32px;
             font-size: 0.9em;
+        }
+
+        .footer-credit {
+            text-align: center;
+            color: #64748b;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .footer-credit p {
+            margin: 0;
         }
 
         .loading {
@@ -548,18 +569,11 @@
         <div id="error" class="error" style="display: none;"></div>
 
         <div id="content" style="display: none;">
-            <div class="dashboard">
-                <div class="stat-card">
-                    <div class="stat-label">Avg Score</div>
-                    <div class="stat-value" id="avgScore">-</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Total Stocks</div>
-                    <div class="stat-value" id="totalStocks">-</div>
-                </div>
-            </div>
-
             <div class="stocks-grid" id="stocksGrid"></div>
+            <div class="footer-credit">
+                <p>Analyst ratings compiled from major financial research platforms. Data for informational purposes only.</p>
+                <p style="font-size: 0.9em; color: #94a3b8; margin-top: 8px;">⚠️ Not financial advice | Scores updated in real-time</p>
+            </div>
         </div>
     </div>
 
@@ -752,9 +766,7 @@
             });
 
             if (stocks.length > 0) {
-                const avgScore = (stocks.reduce((sum, s) => sum + s.score, 0) / stocks.length).toFixed(1);
-                document.getElementById('avgScore').textContent = avgScore;
-                document.getElementById('totalStocks').textContent = stocks.length;
+                // Stats updated - removed display
             }
 
             updateTimestamp();
@@ -805,18 +817,22 @@
         }
 
         function openAnalystDetails(ticker) {
+            event.stopPropagation();
             const stock = allStocks.find(s => s.ticker === ticker);
             const analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
             const total = analysts.buy + analysts.hold + analysts.sell;
 
-            const modalHTML = `
+            const analystModal = document.createElement('div');
+            analystModal.className = 'modal';
+            analystModal.style.display = 'block';
+            analystModal.innerHTML = `
                 <div class="modal-content" style="max-width: 500px;">
                     <div class="modal-header">
                         <div>
                             <div class="modal-title">${stock.ticker}</div>
                             <div class="modal-subtitle">Analyst Ratings</div>
                         </div>
-                        <span class="close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
+                        <span class="close" style="cursor: pointer;">&times;</span>
                     </div>
                     <div style="padding: 24px; text-align: center;">
                         <div style="font-size: 3em; margin-bottom: 24px; font-weight: bold; color: #1e293b;">
@@ -843,18 +859,24 @@
                             <div style="color: #64748b; font-size: 0.9em; margin-bottom: 8px;">Based on consensus from major analysts</div>
                             <div style="font-size: 2em; font-weight: 700; color: #3b82f6;">${total} Analysts</div>
                         </div>
-                        <button onclick="openModal('${stock.ticker}'); this.parentElement.parentElement.style.display='none'" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1em;">View Full Details</button>
+                        <button style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1em; transition: all 0.2s; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">View Full Details</button>
                     </div>
                 </div>
             `;
 
-            const analystModal = document.createElement('div');
-            analystModal.className = 'modal';
-            analystModal.style.display = 'block';
-            analystModal.innerHTML = modalHTML;
-            analystModal.onclick = function(e) {
-                if(e.target === this) this.style.display = 'none';
+            const closeBtn = analystModal.querySelector('.close');
+            const viewBtn = analystModal.querySelector('button');
+
+            closeBtn.onclick = () => analystModal.remove();
+            viewBtn.onclick = () => {
+                openModal(ticker);
+                analystModal.remove();
             };
+
+            analystModal.onclick = function(e) {
+                if(e.target === this) analystModal.remove();
+            };
+
             document.body.appendChild(analystModal);
         }
 
