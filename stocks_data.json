@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "source": "Shibui Finance MCP - Real Market Data",
-  "updated": "2026-09-05",
+  "updated": "2026-09-10",
   "note": "Real end-of-day stock prices and metrics from Shibui Finance. Updated daily.",
   "stocks": [
     {
@@ -105,31 +105,6 @@
       "headlines": []
     },
     {
-      "ticker": "ABT",
-      "name": "Abbott Laboratories",
-      "industry": "Health Care Equipment & Supplies",
-      "price": 108.33,
-      "target": 120.2,
-      "upside": 11.0,
-      "low_52w": 81.97,
-      "high_52w": 137.49,
-      "market_cap": 188.7,
-      "dividend": 2.26,
-      "pe_ratio": 34.78,
-      "analysts": [
-        {
-          "name": "Shibui Finance",
-          "rating": "HOLD",
-          "target": 120.2
-        }
-      ],
-      "momentum": 55.5,
-      "valuation": 55,
-      "sentiment": 53.7,
-      "score": 54.7,
-      "headlines": []
-    },
-    {
       "ticker": "ABNB",
       "name": "Airbnb Inc - Class A",
       "industry": "Hotels, Restaurants & Leisure",
@@ -152,6 +127,31 @@
       "valuation": 40,
       "sentiment": 49.1,
       "score": 45.9,
+      "headlines": []
+    },
+    {
+      "ticker": "ABT",
+      "name": "Abbott Laboratories",
+      "industry": "Health Care Equipment & Supplies",
+      "price": 108.33,
+      "target": 120.2,
+      "upside": 11.0,
+      "low_52w": 81.97,
+      "high_52w": 137.49,
+      "market_cap": 188.7,
+      "dividend": 2.26,
+      "pe_ratio": 34.78,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 120.2
+        }
+      ],
+      "momentum": 55.5,
+      "valuation": 55,
+      "sentiment": 53.7,
+      "score": 54.7,
       "headlines": []
     },
     {
@@ -555,6 +555,31 @@
       "headlines": []
     },
     {
+      "ticker": "AMZN",
+      "name": "Amazon.com Inc",
+      "industry": "Internet & Direct Marketing Retail",
+      "price": 252.4,
+      "target": 328.0,
+      "upside": 30.0,
+      "low_52w": 162.13,
+      "high_52w": 303.93,
+      "market_cap": 2715.1,
+      "dividend": 0.0,
+      "pe_ratio": 20.07,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 328.0
+        }
+      ],
+      "momentum": 65.0,
+      "valuation": 70,
+      "sentiment": 60.0,
+      "score": 65.0,
+      "headlines": []
+    },
+    {
       "ticker": "BAC",
       "name": "Bank Of America Corp",
       "industry": "Banks",
@@ -680,6 +705,31 @@
       "headlines": []
     },
     {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc - Class A",
+      "industry": "Internet & Direct Marketing Retail",
+      "price": 330.65,
+      "target": 428.07,
+      "upside": 29.5,
+      "low_52w": 209.0,
+      "high_52w": 357.78,
+      "market_cap": 4006.2,
+      "dividend": 0.0,
+      "pe_ratio": 16.4,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 428.07
+        }
+      ],
+      "momentum": 64.8,
+      "valuation": 70,
+      "sentiment": 59.8,
+      "score": 64.9,
+      "headlines": []
+    },
+    {
       "ticker": "INTC",
       "name": "Intel Corp",
       "industry": "Semiconductors & Semiconductor Equipment",
@@ -752,6 +802,31 @@
       "valuation": 55,
       "sentiment": 55.2,
       "score": 56.0,
+      "headlines": []
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms Inc - Class A",
+      "industry": "Internet & Direct Marketing Retail",
+      "price": 653.69,
+      "target": 754.77,
+      "upside": 15.5,
+      "low_52w": 308.45,
+      "high_52w": 680.91,
+      "market_cap": 1659.3,
+      "dividend": 0.0,
+      "pe_ratio": 24.37,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "BUY",
+          "target": 754.77
+        }
+      ],
+      "momentum": 57.8,
+      "valuation": 70,
+      "sentiment": 55.2,
+      "score": 61.0,
       "headlines": []
     },
     {
@@ -977,6 +1052,31 @@
       "valuation": 40,
       "sentiment": 56.0,
       "score": 51.7,
+      "headlines": []
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla Inc",
+      "industry": "Automobiles",
+      "price": 367.81,
+      "target": 390.09,
+      "upside": 6.1,
+      "low_52w": 142.0,
+      "high_52w": 430.46,
+      "market_cap": 1381.4,
+      "dividend": 0.0,
+      "pe_ratio": 363.14,
+      "analysts": [
+        {
+          "name": "Shibui Finance",
+          "rating": "HOLD",
+          "target": 390.09
+        }
+      ],
+      "momentum": 53.0,
+      "valuation": 40,
+      "sentiment": 52.0,
+      "score": 48.4,
       "headlines": []
     },
     {
