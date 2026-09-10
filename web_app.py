@@ -48,6 +48,43 @@ def fetch_yahoo_stock(ticker):
         name = info.get('longName', ticker)
         sector = info.get('sector', 'Technology')
 
+        # Try to get analyst ratings
+        analysts = []
+        try:
+            # Try to get recommendation from Yahoo Finance
+            recommendation = info.get('recommendationKey', '').upper()
+            num_analysts = info.get('numberOfAnalystOpinions', 0)
+
+            if recommendation and num_analysts > 0:
+                rating_map = {
+                    'STRONG_BUY': 'BUY',
+                    'BUY': 'BUY',
+                    'HOLD': 'HOLD',
+                    'SELL': 'SELL',
+                    'STRONG_SELL': 'SELL'
+                }
+                rating = rating_map.get(recommendation, 'HOLD')
+                analysts.append({
+                    "name": f"Yahoo Finance ({num_analysts} analysts)",
+                    "rating": rating,
+                    "target": round(target, 2)
+                })
+            else:
+                # Fallback to simple rating
+                upside = ((target - price) / price * 100) if price > 0 else 0
+                analysts.append({
+                    "name": "Yahoo Finance",
+                    "rating": "BUY" if upside > 15 else ("HOLD" if upside > 0 else "SELL"),
+                    "target": round(target, 2)
+                })
+        except:
+            upside = ((target - price) / price * 100) if price > 0 else 0
+            analysts.append({
+                "name": "Yahoo Finance",
+                "rating": "BUY" if upside > 15 else ("HOLD" if upside > 0 else "SELL"),
+                "target": round(target, 2)
+            })
+
         if price > 0:
             upside = ((target - price) / price * 100)
             momentum = min(95, 50 + upside / 2)
@@ -67,7 +104,7 @@ def fetch_yahoo_stock(ticker):
                 "market_cap": round(market_cap, 1),
                 "dividend": round(dividend, 2),
                 "pe_ratio": round(pe, 2),
-                "analysts": [{"name": "Yahoo Finance", "rating": "BUY" if upside > 15 else ("HOLD" if upside > 0 else "SELL"), "target": round(target, 2)}],
+                "analysts": analysts,
                 "momentum": round(momentum, 1),
                 "valuation": round(valuation, 1),
                 "sentiment": round(sentiment, 1),
