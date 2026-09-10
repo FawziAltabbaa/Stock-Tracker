@@ -1059,7 +1059,26 @@
         }
 
         function renderAnalystPie(stock) {
-            const analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
+            let analysts;
+
+            // Handle both array format (new) and object format (old)
+            if (Array.isArray(stock.analysts) && stock.analysts.length > 0) {
+                // New format: count ratings from analyst array
+                const ratings = stock.analysts.map(a => a.rating);
+                analysts = {
+                    buy: ratings.filter(r => r === 'BUY').length,
+                    hold: ratings.filter(r => r === 'HOLD').length,
+                    sell: ratings.filter(r => r === 'SELL').length
+                };
+                // Ensure at least some values if all are 0
+                if (analysts.buy + analysts.hold + analysts.sell === 0) {
+                    analysts = {buy: 33, hold: 33, sell: 34};
+                }
+            } else {
+                // Old format or no data
+                analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
+            }
+
             const svgEl = document.getElementById(`pie-${stock.ticker}`);
             if (!svgEl) return;
 
@@ -1121,7 +1140,26 @@
         function openAnalystDetails(ticker) {
             event.stopPropagation();
             const stock = allStocks.find(s => s.ticker === ticker);
-            const analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
+            let analysts;
+
+            // Handle both array format (new) and object format (old)
+            if (Array.isArray(stock.analysts) && stock.analysts.length > 0) {
+                // New format: count ratings from analyst array
+                const ratings = stock.analysts.map(a => a.rating);
+                analysts = {
+                    buy: ratings.filter(r => r === 'BUY').length,
+                    hold: ratings.filter(r => r === 'HOLD').length,
+                    sell: ratings.filter(r => r === 'SELL').length
+                };
+                // Ensure at least some values if all are 0
+                if (analysts.buy + analysts.hold + analysts.sell === 0) {
+                    analysts = {buy: 33, hold: 33, sell: 34};
+                }
+            } else {
+                // Old format or no data
+                analysts = stock.analysts || {buy: 33, hold: 33, sell: 34};
+            }
+
             const total = analysts.buy + analysts.hold + analysts.sell;
 
             const analystModal = document.createElement('div');
