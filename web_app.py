@@ -53,24 +53,27 @@ def fetch_yahoo_stock(ticker):
         try:
             # Try to get recommendation from Yahoo Finance
             recommendation = info.get('recommendationKey', '').upper()
-            num_analysts = info.get('numberOfAnalystOpinions', 0)
+            num_analysts = info.get('numberOfAnalystOpinions', None)
 
-            if recommendation and num_analysts > 0:
-                rating_map = {
-                    'STRONG_BUY': 'BUY',
-                    'BUY': 'BUY',
-                    'HOLD': 'HOLD',
-                    'SELL': 'SELL',
-                    'STRONG_SELL': 'SELL'
-                }
+            rating_map = {
+                'STRONG_BUY': 'BUY',
+                'BUY': 'BUY',
+                'HOLD': 'HOLD',
+                'SELL': 'SELL',
+                'STRONG_SELL': 'SELL'
+            }
+
+            if recommendation:
                 rating = rating_map.get(recommendation, 'HOLD')
+                # Format analyst name based on whether we have analyst count
+                analyst_name = f"Yahoo Finance ({num_analysts} analysts)" if num_analysts and num_analysts > 0 else "Yahoo Finance Consensus"
                 analysts.append({
-                    "name": f"Yahoo Finance ({num_analysts} analysts)",
+                    "name": analyst_name,
                     "rating": rating,
                     "target": round(target, 2)
                 })
             else:
-                # Fallback to simple rating
+                # Last resort fallback
                 upside = ((target - price) / price * 100) if price > 0 else 0
                 analysts.append({
                     "name": "Yahoo Finance",
