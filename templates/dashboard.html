@@ -1250,7 +1250,7 @@
         async function loadData() {
             showLoading();
             try {
-                const response = await fetch('/api/stocks');
+                const response = await fetch('/api/stocks/live');
                 if (!response.ok) throw new Error('Failed to load data');
                 allStocks = await response.json();
 
