@@ -927,6 +927,11 @@
             </div>
 
             <div style="margin-top: 24px;">
+                <div class="detail-label" style="margin-bottom: 12px;">⭐ Analyst Ratings</div>
+                <div id="modalAnalysts" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;"></div>
+            </div>
+
+            <div style="margin-top: 24px;">
                 <div class="detail-label" style="margin-bottom: 12px;">📰 Latest Headlines</div>
                 <div id="modalHeadlines" style="display: flex; flex-direction: column; gap: 10px;"></div>
             </div>
@@ -1019,6 +1024,24 @@
             document.getElementById('modalValuation').textContent = `${stock.upside > 0 ? '+' : ''}${stock.upside}%`;
             document.getElementById('modalSentiment').textContent = `$${stock.low_52w.toFixed(2)} - $${stock.high_52w.toFixed(2)}`;
             document.getElementById('modalPE').textContent = stock.pe_ratio ? stock.pe_ratio.toFixed(2) : 'N/A';
+
+            const analystsDiv = document.getElementById('modalAnalysts');
+            if (stock.analysts && stock.analysts.length > 0) {
+                analystsDiv.innerHTML = stock.analysts.map(analyst => {
+                    const ratingColor = analyst.rating === 'BUY' ? '#059669' : analyst.rating === 'HOLD' ? '#2563eb' : '#dc2626';
+                    return `
+                        <div style="padding: 12px; background: #f0f9ff; border-left: 4px solid ${ratingColor}; border-radius: 6px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">${analyst.name}</div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: ${ratingColor}; font-weight: 700;">${analyst.rating}</span>
+                                <span style="color: #0071e3; font-weight: 600;">Target: $${analyst.target.toFixed(2)}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                analystsDiv.innerHTML = '<p style="color: #86868b;">No analyst ratings available</p>';
+            }
 
             const headlinesDiv = document.getElementById('modalHeadlines');
             const yahooFinanceLink = `https://finance.yahoo.com/quote/${stock.ticker}/news`;
